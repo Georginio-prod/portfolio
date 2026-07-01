@@ -8,77 +8,25 @@ interface Project {
   icon: string
 }
 
-const props = defineProps<{
+defineProps<{
   project: Project
 }>()
 
 const { t } = useI18n()
-
-const cardRef = ref<HTMLElement | null>(null)
-const previewUrl = ref<string | null>(null)
-const previewLoading = ref(false)
-
-async function fetchPreview(url: string) {
-  previewLoading.value = true
-  try {
-    const res = await fetch(
-      `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false`
-    )
-    const json = await res.json()
-    if (json.status === 'success') {
-      previewUrl.value = json.data.screenshot.url
-    }
-  } catch {
-    previewUrl.value = null
-  } finally {
-    previewLoading.value = false
-  }
-}
-
-onMounted(() => {
-  if (!props.project.url || !cardRef.value) return
-
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (entry.isIntersecting && !previewUrl.value && !previewLoading.value) {
-        fetchPreview(props.project.url!)
-        observer.disconnect()
-      }
-    },
-    { rootMargin: '300px' }
-  )
-
-  observer.observe(cardRef.value)
-  onUnmounted(() => observer.disconnect())
-})
 </script>
 
 <template>
   <div
-    ref="cardRef"
     class="project-card group relative w-[90vw] h-[50vh] md:w-[75vw] md:h-[60vh] lg:w-[800px] lg:h-[520px] rounded-xl overflow-hidden border border-primary/30 hover:border-primary/60 transition-all duration-300 flex-shrink-0"
   >
-    <div class="relative w-full h-full bg-elevated">
-      <!-- Homepage screenshot -->
-      <img
-        v-if="previewUrl"
-        :src="previewUrl"
-        :alt="`${project.title} homepage`"
-        class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-      >
-
-      <!-- Loading / fallback -->
-      <div
-        v-else
-        class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-elevated"
-      >
+    <div class="relative w-full h-full bg-gradient-to-br from-primary/10 via-[var(--ui-bg-elevated)] to-secondary/10">
+      <!-- Branded icon panel (instant — no external screenshot requests) -->
+      <div class="absolute inset-0 flex items-center justify-center">
         <div
-          class="flex size-14 items-center justify-center rounded-2xl bg-primary/15 text-primary ring-1 ring-primary/20"
-          :class="previewLoading ? 'animate-pulse' : ''"
+          class="flex size-24 md:size-28 items-center justify-center rounded-3xl bg-primary/15 text-primary ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110"
         >
-          <UIcon :name="project.icon" class="size-7" />
+          <UIcon :name="project.icon" class="size-12 md:size-14" />
         </div>
-        <span v-if="previewLoading" class="text-xs text-dimmed">{{ t('projects.loading') }}</span>
       </div>
 
       <!-- Full-card link: lets touch users open the project with a single tap

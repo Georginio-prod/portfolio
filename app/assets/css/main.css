@@ -70,8 +70,9 @@ body {
 }
 
 .hero-gradient-text {
-  /* Softer indigo → violet blend, easier on the eyes than bright blue. */
-  background: linear-gradient(135deg, #6366f1, #818cf8, #a78bfa);
+  /* Monochrome blend from the theme's own text tokens, so it stays readable in
+     both light and dark mode (near-white→grey on dark, near-black→grey on light). */
+  background: linear-gradient(135deg, var(--ui-text-highlighted), var(--ui-text-dimmed));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

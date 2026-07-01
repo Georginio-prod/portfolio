@@ -1,11 +1,11 @@
 export default defineAppConfig({
   ui: {
+    // Neutral / monochrome palette: one cohesive family of cool greys (zinc)
+    // for accents, secondary accents and surfaces alike. Minimalist and calm.
     colors: {
-      // Indigo is calmer on the eyes than a pure saturated blue.
-      primary: 'indigo',
-      // Secondary accent used to break up the mono-blue look.
-      secondary: 'cyan',
-      neutral: 'neutral'
+      primary: 'zinc',
+      secondary: 'zinc',
+      neutral: 'zinc'
     }
   }
 })

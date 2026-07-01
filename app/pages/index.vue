@@ -125,10 +125,10 @@ const contactLinks = computed(() => [
         <line x1="0" y1="0" x2="1200" y2="800" stroke="rgba(120,120,140,0.04)" stroke-width="2" />
         <line x1="1200" y1="0" x2="0" y2="800" stroke="rgba(120,120,140,0.04)" stroke-width="2" />
         <g class="animate-float-slow">
-          <polygon points="150,100 300,50 350,200 200,250" fill="none" stroke="rgba(129,140,248,0.14)" stroke-width="1" />
+          <polygon points="150,100 300,50 350,200 200,250" fill="none" stroke="rgba(161,161,170,0.12)" stroke-width="1" />
         </g>
         <g class="animate-float-slow-reverse">
-          <polygon points="900,600 1050,550 1100,700 950,750" fill="none" stroke="rgba(34,211,238,0.12)" stroke-width="1" />
+          <polygon points="900,600 1050,550 1100,700 950,750" fill="none" stroke="rgba(161,161,170,0.10)" stroke-width="1" />
         </g>
         <g class="hero-spin-slow" style="transform-origin: 1100px 150px">
           <circle cx="1100" cy="150" r="100" fill="none" stroke="rgba(120,120,140,0.08)" stroke-width="1" />
