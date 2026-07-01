@@ -1,10 +1,10 @@
 export default defineAppConfig({
   ui: {
-    // Neutral / monochrome palette: one cohesive family of cool greys (zinc)
-    // for accents, secondary accents and surfaces alike. Minimalist and calm.
+    // Two-color harmony: a single blue accent on a cool neutral (zinc) base.
+    // Blue's cool undertone sits naturally against zinc's greys.
     colors: {
-      primary: 'zinc',
-      secondary: 'zinc',
+      primary: 'blue',
+      secondary: 'blue',
       neutral: 'zinc'
     }
   }

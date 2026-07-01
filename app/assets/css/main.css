@@ -70,9 +70,9 @@ body {
 }
 
 .hero-gradient-text {
-  /* Monochrome blend from the theme's own text tokens, so it stays readable in
-     both light and dark mode (near-white→grey on dark, near-black→grey on light). */
-  background: linear-gradient(135deg, var(--ui-text-highlighted), var(--ui-text-dimmed));
+  /* Blends the two palette colors: theme foreground → blue accent. Readable in
+     both modes (near-white→blue on dark, near-black→blue on light). */
+  background: linear-gradient(135deg, var(--ui-text-highlighted), var(--ui-primary));
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

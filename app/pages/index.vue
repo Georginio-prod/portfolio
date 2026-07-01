@@ -125,7 +125,7 @@ const contactLinks = computed(() => [
         <line x1="0" y1="0" x2="1200" y2="800" stroke="rgba(120,120,140,0.04)" stroke-width="2" />
         <line x1="1200" y1="0" x2="0" y2="800" stroke="rgba(120,120,140,0.04)" stroke-width="2" />
         <g class="animate-float-slow">
-          <polygon points="150,100 300,50 350,200 200,250" fill="none" stroke="rgba(161,161,170,0.12)" stroke-width="1" />
+          <polygon points="150,100 300,50 350,200 200,250" fill="none" stroke="rgba(96,165,250,0.14)" stroke-width="1" />
         </g>
         <g class="animate-float-slow-reverse">
           <polygon points="900,600 1050,550 1100,700 950,750" fill="none" stroke="rgba(161,161,170,0.10)" stroke-width="1" />
@@ -213,6 +213,7 @@ const contactLinks = computed(() => [
             <div class="hero-animate hero-animate-delay-4 flex flex-wrap gap-3 pt-2">
               <UButton
                 to="#projects"
+                :locale="false"
                 size="lg"
                 class="rounded-full px-6 font-semibold"
                 trailing-icon="i-lucide-arrow-right"
@@ -221,6 +222,7 @@ const contactLinks = computed(() => [
               </UButton>
               <UButton
                 to="#contact"
+                :locale="false"
                 size="lg"
                 color="neutral"
                 variant="outline"

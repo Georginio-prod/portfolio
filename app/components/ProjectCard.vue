@@ -8,11 +8,24 @@ interface Project {
   icon: string
 }
 
-defineProps<{
+const props = defineProps<{
   project: Project
 }>()
 
 const { t } = useI18n()
+
+// Live homepage thumbnail via microlink's image embed. Unlike the old version
+// this is a plain, natively lazy-loaded <img>: the browser only fetches it when
+// the card nears the viewport and it never blocks rendering. The icon tile shows
+// as a placeholder underneath and stays if the screenshot fails to load.
+const previewSrc = computed(() =>
+  props.project.url
+    ? `https://api.microlink.io/?url=${encodeURIComponent(props.project.url)}&screenshot=true&embed=screenshot.url&meta=false&viewport.width=1280&viewport.height=800`
+    : null
+)
+
+const loaded = ref(false)
+const failed = ref(false)
 </script>
 
 <template>
@@ -20,7 +33,7 @@ const { t } = useI18n()
     class="project-card group relative w-[90vw] h-[50vh] md:w-[75vw] md:h-[60vh] lg:w-[800px] lg:h-[520px] rounded-xl overflow-hidden border border-primary/30 hover:border-primary/60 transition-all duration-300 flex-shrink-0"
   >
     <div class="relative w-full h-full bg-gradient-to-br from-primary/10 via-[var(--ui-bg-elevated)] to-secondary/10">
-      <!-- Branded icon panel (instant — no external screenshot requests) -->
+      <!-- Icon placeholder: shown instantly while the screenshot loads (or if it fails) -->
       <div class="absolute inset-0 flex items-center justify-center">
         <div
           class="flex size-24 md:size-28 items-center justify-center rounded-3xl bg-primary/15 text-primary ring-1 ring-primary/20 transition-transform duration-500 group-hover:scale-110"
@@ -28,6 +41,19 @@ const { t } = useI18n()
           <UIcon :name="project.icon" class="size-12 md:size-14" />
         </div>
       </div>
+
+      <!-- Real homepage preview: lazy + async so it streams in without blocking -->
+      <img
+        v-if="previewSrc && !failed"
+        :src="previewSrc"
+        :alt="`Preview of ${project.title}`"
+        loading="lazy"
+        decoding="async"
+        class="absolute inset-0 h-full w-full object-cover object-top transition-[opacity,transform] duration-700 group-hover:scale-105"
+        :class="loaded ? 'opacity-100' : 'opacity-0'"
+        @load="loaded = true"
+        @error="failed = true"
+      >
 
       <!-- Full-card link: lets touch users open the project with a single tap
            (the rich details overlay below is hover-only and unreachable on mobile). -->
