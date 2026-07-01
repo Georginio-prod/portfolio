@@ -152,18 +152,6 @@ body {
   transform: translateY(-4px);
 }
 
-/* Skill pill hover */
-.skill-pill {
-  transition:
-    transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    ring-color 0.3s ease,
-    background-color 0.3s ease;
-}
-
-.skill-pill:hover {
-  transform: translateY(-2px);
-}
-
 /* Timeline pulse */
 @keyframes timelinePulse {
   0%,
@@ -177,30 +165,6 @@ body {
 
 .timeline-dot {
   animation: timelinePulse 2.5s ease-in-out infinite;
-}
-
-/* Navbar link underline */
-.nav-link {
-  position: relative;
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: 2px;
-  left: 50%;
-  width: 0;
-  height: 2px;
-  border-radius: 9999px;
-  background: var(--ui-color-primary-500);
-  transition:
-    width 0.3s cubic-bezier(0.22, 1, 0.36, 1),
-    left 0.3s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.nav-link:hover::after {
-  width: 60%;
-  left: 20%;
 }
 
 /* Horizontal project scroll */

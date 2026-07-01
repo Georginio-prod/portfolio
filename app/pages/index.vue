@@ -36,33 +36,6 @@ const focusAreas = [
   }
 ]
 
-const coreSkills = [
-  { name: 'Vue.js', icon: 'i-simple-icons-vuedotjs' },
-  { name: 'Nuxt.js', icon: 'i-simple-icons-nuxtdotjs' },
-  { name: 'JavaScript', icon: 'i-simple-icons-javascript' },
-  { name: 'TypeScript', icon: 'i-simple-icons-typescript' },
-  { name: 'HTML & CSS', icon: 'i-simple-icons-html5' },
-  { name: 'Tailwind CSS', icon: 'i-simple-icons-tailwindcss' },
-  { name: 'DaisyUI', icon: 'i-simple-icons-daisyui' },
-  { name: 'Solidity', icon: 'i-simple-icons-solidity' }
-]
-
-const secondarySkills = [
-  'React.js / Next.js',
-  'Node.js',
-  'Python',
-  'Java',
-  'WordPress',
-  'Figma · UI/UX',
-  'Docker',
-  'Linux',
-  'Git / Git Flow',
-  'MongoDB',
-  'Firebase',
-  'MySQL',
-  'Scrum'
-]
-
 const projects: Project[] = [
   {
     title: 'CNC Portal',
@@ -412,51 +385,6 @@ const contactLinks = [
                 </span>
               </div>
             </div>
-          </div>
-        </RevealOnScroll>
-      </UContainer>
-    </section>
-
-    <!-- Skills -->
-    <section id="skills" class="py-20 md:py-28 border-t border-white/10">
-      <UContainer>
-        <RevealOnScroll>
-          <div class="max-w-2xl mb-12">
-            <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
-              Skills
-            </p>
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight">My tech stack.</h2>
-          </div>
-        </RevealOnScroll>
-
-        <RevealOnScroll :delay="80">
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-neutral-500 mb-4">
-            Core skills
-          </h3>
-          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
-            <div
-              v-for="skill in coreSkills"
-              :key="skill.name"
-              class="skill-pill flex items-center gap-3 rounded-xl bg-white/5 ring-1 ring-white/10 px-4 py-3 hover:ring-primary/50 hover:bg-white/[0.07]"
-            >
-              <UIcon :name="skill.icon" class="size-5 text-primary shrink-0" />
-              <span class="text-sm font-medium">{{ skill.name }}</span>
-            </div>
-          </div>
-        </RevealOnScroll>
-
-        <RevealOnScroll :delay="160">
-          <h3 class="text-xs font-semibold uppercase tracking-widest text-neutral-500 mt-10 mb-4">
-            Additional skills
-          </h3>
-          <div class="flex flex-wrap gap-2">
-            <span
-              v-for="skill in secondarySkills"
-              :key="skill"
-              class="skill-pill rounded-full bg-white/5 ring-1 ring-white/10 px-3.5 py-1.5 text-sm text-neutral-300 hover:ring-primary/30 hover:text-white"
-            >
-              {{ skill }}
-            </span>
           </div>
         </RevealOnScroll>
       </UContainer>
