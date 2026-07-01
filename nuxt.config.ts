@@ -3,9 +3,24 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-01',
   devtools: { enabled: true },
 
-  modules: ['@nuxt/ui'],
+  modules: ['@nuxt/ui', '@nuxtjs/i18n'],
 
   css: ['~/assets/css/main.css'],
+
+  i18n: {
+    strategy: 'no_prefix',
+    defaultLocale: 'en',
+    lazy: false,
+    langDir: 'locales',
+    // English is always the first-visit default (browser-language auto-detection
+    // is off on purpose). The visitor's manual choice is restored from a cookie
+    // by the `restore-locale` plugin, before render, on both server and client.
+    detectBrowserLanguage: false,
+    locales: [
+      { code: 'en', language: 'en-US', name: 'English', file: 'en.json' },
+      { code: 'fr', language: 'fr-FR', name: 'Français', file: 'fr.json' }
+    ]
+  },
 
   colorMode: {
     preference: 'dark',

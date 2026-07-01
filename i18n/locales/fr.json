@@ -1,0 +1,93 @@
+{
+  "hero": {
+    "greeting": "Salut",
+    "namePrefix": "Je suis",
+    "name": "Komla Etonam Georges EKLOU",
+    "role": "Développeur Full Stack & Web3",
+    "bio": "Diplômé en informatique de {university}, spécialisé en {focus}. Je conçois des applications full-stack, des intégrations décentralisées et des interfaces soignées — actuellement au sein de l'équipe de développement de {company} à Lomé, Togo.",
+    "bioUniversity": "UCAO / UUT",
+    "bioFocus": "développement web et Web3",
+    "bioCompany": "CNC",
+    "skillsTitle": "Compétences techniques",
+    "focusTitle": "Domaines de prédilection",
+    "tagline": "J'aime transformer des idées complexes en produits clairs et fiables, à l'intersection du web, de la blockchain et de l'expérience utilisateur.",
+    "ctaProjects": "Voir mes projets",
+    "ctaContact": "Me contacter",
+    "basedIn": "Basé à",
+    "location": "Lomé, Togo",
+    "openToWork": "Ouvert aux opportunités"
+  },
+  "focusAreas": [
+    { "title": "Applications web", "description": "Produits full-stack avec Vue, Nuxt et React" },
+    { "title": "Web3 & Blockchain", "description": "DApps, smart contracts & intégrations décentralisées" },
+    { "title": "Ingénierie UI", "description": "Interfaces pixel-perfect, responsives & accessibles" }
+  ],
+  "about": {
+    "label": "À propos",
+    "heading": "Rigueur, curiosité et sens du détail.",
+    "p1": "Titulaire d'une {degree} (spécialité développement d'applications), je conçois des applications web et Web3 avec Vue, Nuxt et React. Je contribue actuellement à l'équipe de développement de {company}.",
+    "p1Degree": "Licence en informatique",
+    "p1Company": "CNC",
+    "p2": "Je souhaite aujourd'hui m'ouvrir au {devops}, au cloud et à la cybersécurité (SysOps / SecOps).",
+    "p2Devops": "DevOps",
+    "location": "Zanguéra, Lomé — Togo",
+    "languages": "Français · Anglais (B1)",
+    "phone": "+228 98 93 85 55",
+    "softSkills": ["Rigueur", "Curiosité", "Esprit d'équipe", "Écoute active", "Fiabilité"]
+  },
+  "projects": {
+    "label": "Projets",
+    "heading": "Ce sur quoi je travaille.",
+    "subtitle": "Survolez une carte pour plus de détails et visiter le projet.",
+    "subtitleTouch": "Touchez une carte pour ouvrir le projet.",
+    "scrollHint": "← Faites défiler horizontalement pour voir plus de projets →",
+    "visit": "Visiter le projet",
+    "loading": "Chargement de l'aperçu…",
+    "items": [
+      { "id": "cnc", "title": "CNC Portal", "description": "Portail web pour la CNC. En tant que membre de l'équipe de développement, je travaille sur l'intégration et les fonctionnalités de la plateforme.", "status": "Pro" },
+      { "id": "nova", "title": "Nova Graphik Visu", "description": "Site vitrine de l'agence créative Nova Graphik : services, portfolio et présentation de l'équipe.", "status": "Pro" },
+      { "id": "orga", "title": "OrgaAfrica", "description": "Plateforme vitrine pour restaurants et commerces locaux : commandes, paiements et gestion des files d'attente.", "status": "Pro" },
+      { "id": "pulse", "title": "Pulse Score", "description": "Application de suivi de scores et de performances, actuellement en développement actif.", "status": "En cours" },
+      { "id": "meet", "title": "Meet — Landing Page", "description": "Landing page produit responsive, intégration pixel-perfect avec Vue.", "status": "" },
+      { "id": "pomodoro", "title": "Pomodoro App", "description": "Minuteur Pomodoro pour la productivité, avec paramètres et thèmes personnalisables.", "status": "" },
+      { "id": "audiophile", "title": "Audiophile E-commerce", "description": "Boutique e-commerce audio multi-pages : catalogue, panier et paiement.", "status": "" },
+      { "id": "fem", "title": "Frontend Mentor", "description": "Mes solutions aux défis Frontend Mentor : intégrations pixel-perfect, responsives et accessibles.", "status": "" }
+    ]
+  },
+  "experience": {
+    "label": "Expérience",
+    "heading": "Mon parcours professionnel.",
+    "items": [
+      { "period": "Depuis juin 2025", "role": "Développeur Web3 Junior", "company": "W3 Frame", "place": "Lomé, Avédji — Togo", "points": ["Conception d'applications décentralisées et d'intégrations Web3."] },
+      { "period": "Déc. 2024 – Mars 2025", "role": "Stagiaire Service Client & Analyste des ventes", "company": "Prodicom Inter Togo", "place": "Tsévié — Togo", "points": ["Analyse des données clients pour identifier les tendances d'achat.", "Rédaction de rapports détaillés sur la performance produits et ventes."] },
+      { "period": "Août 2024 – Oct. 2024", "role": "Intégration UI", "company": "W3 Frame", "place": "Lomé — Togo", "points": ["Création et intégration de maquettes pixel-perfect pour des projets web.", "Développement d'applications web."] },
+      { "period": "Mai 2024 – Août 2024", "role": "Stagiaire Développeur Web", "company": "New Brain Factory", "place": "Klikamé, Lomé — Togo", "points": ["Conception d'une application e-commerce avec React / Next.js (projet de fin d'études)."] }
+    ]
+  },
+  "education": {
+    "label": "Formation",
+    "heading": "Diplômes & études.",
+    "items": [
+      { "period": "Nov. 2021 – Juil. 2024", "title": "Licence en Sciences de l'Ingénieur — Informatique", "detail": "Spécialité Développement d'applications · Mention Bien (Bac +3)", "school": "UCAO / UUT — Lomé, Togo" },
+      { "period": "Nov. 2019 – Nov. 2020", "title": "Baccalauréat scientifique (Série D)", "detail": "Deuxième partie", "school": "Lycée Moderne d'Adidogomé — Lomé, Togo" }
+    ]
+  },
+  "interests": {
+    "title": "Centres d'intérêt",
+    "items": ["Sport & loisirs", "Voyages & tourisme", "Lecture", "Musique"]
+  },
+  "contact": {
+    "label": "Contact",
+    "heading": "Restons en contact.",
+    "subtitle": "Ouvert aux opportunités, collaborations et échanges autour du développement web et Web3.",
+    "emailLabel": "E-mail",
+    "phoneLabel": "Téléphone",
+    "githubLabel": "GitHub"
+  },
+  "footer": {
+    "role": "Développeur Full Stack"
+  },
+  "switcher": {
+    "label": "Changer de langue"
+  }
+}

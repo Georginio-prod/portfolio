@@ -1,0 +1,93 @@
+{
+  "hero": {
+    "greeting": "Hi",
+    "namePrefix": "I'm",
+    "name": "Komla Etonam Georges EKLOU",
+    "role": "Full Stack & Web3 Developer",
+    "bio": "Computer Science graduate from {university} specializing in {focus}. I build full-stack applications, decentralized integrations, and polished interfaces — currently contributing to the {company} development team in Lomé, Togo.",
+    "bioUniversity": "UCAO / UUT",
+    "bioFocus": "web development and Web3",
+    "bioCompany": "CNC",
+    "skillsTitle": "Technical Skills",
+    "focusTitle": "Focus Areas",
+    "tagline": "I enjoy turning complex ideas into clean, reliable products at the intersection of web, blockchain, and user experience.",
+    "ctaProjects": "View my projects",
+    "ctaContact": "Get in touch",
+    "basedIn": "Based in",
+    "location": "Lomé, Togo",
+    "openToWork": "Open to work"
+  },
+  "focusAreas": [
+    { "title": "Web Applications", "description": "Full-stack products with Vue, Nuxt, and React" },
+    { "title": "Web3 & Blockchain", "description": "DApps, smart contracts & decentralized integrations" },
+    { "title": "UI Engineering", "description": "Pixel-perfect, responsive & accessible interfaces" }
+  ],
+  "about": {
+    "label": "About",
+    "heading": "Rigor, curiosity, and attention to detail.",
+    "p1": "With a {degree} (application development specialization), I build web and Web3 applications with Vue, Nuxt, and React. I currently contribute to the {company} development team.",
+    "p1Degree": "Bachelor's in Computer Science",
+    "p1Company": "CNC",
+    "p2": "I'm now looking to expand into {devops}, cloud, and cybersecurity (SysOps / SecOps).",
+    "p2Devops": "DevOps",
+    "location": "Zanguéra, Lomé — Togo",
+    "languages": "French · English (B1)",
+    "phone": "+228 98 93 85 55",
+    "softSkills": ["Rigor", "Curiosity", "Team spirit", "Active listening", "Reliability"]
+  },
+  "projects": {
+    "label": "Projects",
+    "heading": "What I'm working on.",
+    "subtitle": "Hover a card to read more details and visit the project.",
+    "subtitleTouch": "Tap a card to open the project.",
+    "scrollHint": "← Scroll horizontally to view more projects →",
+    "visit": "Visit Project",
+    "loading": "Loading preview…",
+    "items": [
+      { "id": "cnc", "title": "CNC Portal", "description": "Web portal for CNC. As a development team member, I work on integration and platform features.", "status": "Pro" },
+      { "id": "nova", "title": "Nova Graphik Visu", "description": "Showcase website for the Nova Graphik creative agency: services, portfolio, and team presentation.", "status": "Pro" },
+      { "id": "orga", "title": "OrgaAfrica", "description": "Showcase platform for restaurants and local businesses: orders, payments, and queue management.", "status": "Pro" },
+      { "id": "pulse", "title": "Pulse Score", "description": "Score and performance tracking application, currently in active development.", "status": "In progress" },
+      { "id": "meet", "title": "Meet — Landing Page", "description": "Responsive product landing page, pixel-perfect integration with Vue.", "status": "" },
+      { "id": "pomodoro", "title": "Pomodoro App", "description": "Pomodoro timer for productivity, with customizable settings and themes.", "status": "" },
+      { "id": "audiophile", "title": "Audiophile E-commerce", "description": "Multi-page audio e-commerce store: catalog, cart, and checkout.", "status": "" },
+      { "id": "fem", "title": "Frontend Mentor", "description": "My Frontend Mentor challenge solutions: pixel-perfect, responsive, and accessible builds.", "status": "" }
+    ]
+  },
+  "experience": {
+    "label": "Experience",
+    "heading": "My professional journey.",
+    "items": [
+      { "period": "Since June 2025", "role": "Junior Web3 Developer", "company": "W3 Frame", "place": "Lomé, Avédji — Togo", "points": ["Building decentralized applications and Web3 integrations."] },
+      { "period": "Dec 2024 – Mar 2025", "role": "Customer Service & Sales Analyst Intern", "company": "Prodicom Inter Togo", "place": "Tsévié — Togo", "points": ["Analyzed customer data to identify purchasing trends.", "Created detailed reports on product and sales performance."] },
+      { "period": "Aug 2024 – Oct 2024", "role": "UI Integration", "company": "W3 Frame", "place": "Lomé — Togo", "points": ["Created and integrated pixel-perfect mockups for web projects.", "Developed web applications."] },
+      { "period": "May 2024 – Aug 2024", "role": "Web Developer Intern", "company": "New Brain Factory", "place": "Klikamé, Lomé — Togo", "points": ["Designed an e-commerce application with React / Next.js (final-year project)."] }
+    ]
+  },
+  "education": {
+    "label": "Education",
+    "heading": "Degrees & studies.",
+    "items": [
+      { "period": "Nov 2021 – Jul 2024", "title": "Bachelor's in Engineering Sciences — Computer Science", "detail": "Application Development specialization · Good standing (Bachelor +3)", "school": "UCAO / UUT — Lomé, Togo" },
+      { "period": "Nov 2019 – Nov 2020", "title": "Scientific Baccalaureate (Series D)", "detail": "Second part", "school": "Lycée Moderne d'Adidogomé — Lomé, Togo" }
+    ]
+  },
+  "interests": {
+    "title": "Interests",
+    "items": ["Sports & leisure", "Travel & tourism", "Reading", "Music"]
+  },
+  "contact": {
+    "label": "Connect",
+    "heading": "Let's stay in touch.",
+    "subtitle": "Open to opportunities, collaborations, and conversations around web and Web3 development.",
+    "emailLabel": "Email",
+    "phoneLabel": "Phone",
+    "githubLabel": "GitHub"
+  },
+  "footer": {
+    "role": "Full Stack Developer"
+  },
+  "switcher": {
+    "label": "Change language"
+  }
+}

@@ -12,6 +12,8 @@ const props = defineProps<{
   project: Project
 }>()
 
+const { t } = useI18n()
+
 const cardRef = ref<HTMLElement | null>(null)
 const previewUrl = ref<string | null>(null)
 const previewLoading = ref(false)
@@ -56,7 +58,7 @@ onMounted(() => {
     ref="cardRef"
     class="project-card group relative w-[90vw] h-[50vh] md:w-[75vw] md:h-[60vh] lg:w-[800px] lg:h-[520px] rounded-xl overflow-hidden border border-primary/30 hover:border-primary/60 transition-all duration-300 flex-shrink-0"
   >
-    <div class="relative w-full h-full bg-neutral-900">
+    <div class="relative w-full h-full bg-elevated">
       <!-- Homepage screenshot -->
       <img
         v-if="previewUrl"
@@ -68,7 +70,7 @@ onMounted(() => {
       <!-- Loading / fallback -->
       <div
         v-else
-        class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-neutral-900/90"
+        class="absolute inset-0 flex flex-col items-center justify-center gap-3 bg-elevated"
       >
         <div
           class="flex size-14 items-center justify-center rounded-2xl bg-primary/15 text-primary ring-1 ring-primary/20"
@@ -76,8 +78,19 @@ onMounted(() => {
         >
           <UIcon :name="project.icon" class="size-7" />
         </div>
-        <span v-if="previewLoading" class="text-xs text-neutral-500">Loading preview…</span>
+        <span v-if="previewLoading" class="text-xs text-dimmed">{{ t('projects.loading') }}</span>
       </div>
+
+      <!-- Full-card link: lets touch users open the project with a single tap
+           (the rich details overlay below is hover-only and unreachable on mobile). -->
+      <a
+        v-if="project.url"
+        :href="project.url"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="absolute inset-0 z-[15] lg:hidden"
+        :aria-label="`${t('projects.visit')}: ${project.title}`"
+      />
 
       <!-- Title badge (top-right) -->
       <div class="absolute top-0 right-0 bg-gradient-to-bl from-black/80 to-transparent p-6 md:p-8 text-right pointer-events-none z-10">
@@ -125,7 +138,7 @@ onMounted(() => {
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 text-primary hover:text-primary-300 font-medium text-base md:text-lg transition-colors"
           >
-            Visit Project
+            {{ t('projects.visit') }}
             <UIcon name="i-lucide-external-link" class="size-5 md:size-6" />
           </a>
         </div>
