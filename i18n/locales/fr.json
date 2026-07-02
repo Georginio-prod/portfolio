@@ -46,6 +46,7 @@
     "items": [
       { "id": "cnc", "title": "CNC Portal", "description": "Portail web pour la CNC. En tant que membre de l'équipe de développement, je travaille sur l'intégration et les fonctionnalités de la plateforme.", "status": "Pro" },
       { "id": "nova", "title": "Nova Graphik Visu", "description": "Site vitrine de l'agence créative Nova Graphik : services, portfolio et présentation de l'équipe.", "status": "Pro" },
+      { "id": "designer", "title": "Portfolio Graphiste", "description": "Portfolio conçu et développé pour un graphiste : présentation de ses créations, services et identité visuelle.", "status": "Pro" },
       { "id": "orga", "title": "OrgaAfrica", "description": "Plateforme vitrine pour restaurants et commerces locaux : commandes, paiements et gestion des files d'attente.", "status": "Pro" },
       { "id": "pulse", "title": "Pulse Score", "description": "Application de suivi de scores et de performances, actuellement en développement actif.", "status": "En cours" },
       { "id": "meet", "title": "Meet — Landing Page", "description": "Landing page produit responsive, intégration pixel-perfect avec Vue.", "status": "" },

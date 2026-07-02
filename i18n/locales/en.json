@@ -46,6 +46,7 @@
     "items": [
       { "id": "cnc", "title": "CNC Portal", "description": "Web portal for CNC. As a development team member, I work on integration and platform features.", "status": "Pro" },
       { "id": "nova", "title": "Nova Graphik Visu", "description": "Showcase website for the Nova Graphik creative agency: services, portfolio, and team presentation.", "status": "Pro" },
+      { "id": "designer", "title": "Designer Portfolio", "description": "Portfolio designed and built for a graphic designer: showcasing their creative work, services, and visual identity.", "status": "Pro" },
       { "id": "orga", "title": "OrgaAfrica", "description": "Showcase platform for restaurants and local businesses: orders, payments, and queue management.", "status": "Pro" },
       { "id": "pulse", "title": "Pulse Score", "description": "Score and performance tracking application, currently in active development.", "status": "In progress" },
       { "id": "meet", "title": "Meet — Landing Page", "description": "Responsive product landing page, pixel-perfect integration with Vue.", "status": "" },
