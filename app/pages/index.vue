@@ -24,6 +24,7 @@ const heroSkills = [
 const projectMeta: Record<string, { url: string, icon: string, tags: string[] }> = {
   cnc: { url: 'https://app.cncportal.io/login', icon: 'i-lucide-building-2', tags: ['Vue', 'Team', 'Pro'] },
   nova: { url: 'https://novagraphikvisu.com/', icon: 'i-lucide-palette', tags: ['Nuxt', 'Landing', 'Pro'] },
+  designer: { url: 'https://my-portfolio-production-e928.up.railway.app/', icon: 'i-lucide-pen-tool', tags: ['Portfolio', 'Design', 'Pro'] },
   orga: { url: 'https://www.orga-africa.com/', icon: 'i-lucide-store', tags: ['Nuxt', 'Landing', 'Pro'] },
   pulse: { url: 'https://pulse-score-two.vercel.app/', icon: 'i-lucide-activity', tags: ['Vue', 'App', 'WIP'] },
   meet: { url: 'https://meet-landing-page-kohl.vercel.app/', icon: 'i-lucide-video', tags: ['Vue', 'Responsive', 'Landing'] },
