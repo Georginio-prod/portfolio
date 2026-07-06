@@ -49,6 +49,7 @@ const projects = computed(() =>
       title: rt(item.title),
       description: rt(item.description),
       status: rt(item.status),
+      note: item.note ? rt(item.note) : '',
       ...projectMeta[id]
     }
   })
@@ -241,11 +242,13 @@ const contactLinks = computed(() => [
               <div class="hero-avatar-ring absolute -inset-3 rounded-full border border-primary/20" />
               <div class="hero-avatar-ring absolute -inset-6 rounded-full border border-default" />
               <div
-                class="relative flex size-56 items-center justify-center rounded-full bg-gradient-to-br from-primary/20 via-[var(--ui-bg-elevated)] to-secondary/10 ring-1 ring-primary/30"
+                class="relative size-56 overflow-hidden rounded-full bg-gradient-to-br from-primary/20 via-[var(--ui-bg-elevated)] to-secondary/10 ring-1 ring-primary/30"
               >
-                <span class="bg-gradient-to-br from-primary via-primary-400 to-secondary bg-clip-text text-5xl font-bold text-transparent">
-                  KE
-                </span>
+                <img
+                  src="/profile.jpg"
+                  :alt="t('hero.name')"
+                  class="size-full object-cover object-top"
+                >
               </div>
             </div>
             <div class="w-52 space-y-2 rounded-2xl border border-default bg-elevated p-4 text-center backdrop-blur-sm">
