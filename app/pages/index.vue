@@ -237,7 +237,7 @@ const contactLinks = computed(() => [
           </div>
 
           <!-- Profile visual -->
-          <div class="hero-animate hero-animate-delay-3 hidden lg:flex lg:flex-col lg:items-center lg:gap-6">
+          <div class="hero-animate hero-animate-delay-3 order-first flex flex-col items-center gap-6 lg:order-none">
             <div class="relative">
               <div class="hero-avatar-ring absolute -inset-3 rounded-full border border-primary/20" />
               <div class="hero-avatar-ring absolute -inset-6 rounded-full border border-default" />
@@ -247,7 +247,7 @@ const contactLinks = computed(() => [
                 <img
                   src="/profile.jpg"
                   :alt="t('hero.name')"
-                  class="size-full object-cover object-top"
+                  class="size-full scale-125 object-cover object-[center_42%]"
                 >
               </div>
             </div>
