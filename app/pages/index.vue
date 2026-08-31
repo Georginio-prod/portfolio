@@ -20,17 +20,33 @@ const heroSkills = [
 ]
 
 // Links / icons / tags are language-agnostic; the translatable text (title,
-// description, status) comes from the locale files and is merged in by id.
-const projectMeta: Record<string, { url: string, icon: string, tags: string[] }> = {
-  cnc: { url: 'https://app.cncportal.io/login', icon: 'i-lucide-building-2', tags: ['Vue', 'Team', 'Pro'] },
-  nova: { url: 'https://novagraphikvisu.com/', icon: 'i-lucide-palette', tags: ['Nuxt', 'Landing', 'Pro'] },
-  designer: { url: 'https://my-portfolio-production-e928.up.railway.app/', icon: 'i-lucide-pen-tool', tags: ['Portfolio', 'Design', 'Pro'] },
-  orga: { url: 'https://www.orga-africa.com/', icon: 'i-lucide-store', tags: ['Nuxt', 'Landing', 'Pro'] },
-  pulse: { url: 'https://pulse-score-two.vercel.app/', icon: 'i-lucide-activity', tags: ['Vue', 'App', 'WIP'] },
-  meet: { url: 'https://meet-landing-page-kohl.vercel.app/', icon: 'i-lucide-video', tags: ['Vue', 'Responsive', 'Landing'] },
-  pomodoro: { url: 'https://promodoro-app-iota.vercel.app/', icon: 'i-lucide-timer', tags: ['Vue', 'App', 'UI'] },
-  audiophile: { url: 'https://audiophile-ecommerce-psi-ecru.vercel.app/', icon: 'i-lucide-headphones', tags: ['E-commerce', 'Front-end'] },
-  fem: { url: 'https://www.frontendmentor.io/profile/Georginio-prod?tab=solutions', icon: 'i-lucide-code-2', tags: ['Challenges', 'HTML/CSS'] }
+// description, status, note) comes from the locale files and is merged in by id.
+// `online` drives the colour of the card's special mention: blue when the
+// project is reachable, amber while it is still unpublished. `cover` overrides
+// the generated screenshot for projects that have no live URL to shoot.
+interface ProjectMeta {
+  url: string
+  icon: string
+  tags: string[]
+  online: boolean
+  wip?: boolean
+  cover?: string
+}
+
+const projectMeta: Record<string, ProjectMeta> = {
+  cnc: { url: 'https://app.cncportal.io/login', icon: 'i-lucide-building-2', tags: ['Vue', 'Team', 'Pro'], online: true, wip: true },
+  nova: { url: 'https://novagraphikvisu.com/', icon: 'i-lucide-palette', tags: ['Nuxt', 'Landing', 'Pro'], online: true },
+  designer: { url: 'https://my-portfolio-production-e928.up.railway.app/', icon: 'i-lucide-pen-tool', tags: ['Portfolio', 'Design', 'Pro'], online: true },
+  orga: { url: 'https://www.orga-africa.com/', icon: 'i-lucide-store', tags: ['Nuxt', 'Landing', 'Pro'], online: true },
+  pulse: { url: 'https://pulse-score-two.vercel.app/', icon: 'i-lucide-activity', tags: ['Vue', 'App', 'WIP'], online: true, wip: true },
+  // Not deployed yet, so there is nothing to screenshot: the card uses a local
+  // cover and the link points at the repository.
+  worktogo: { url: 'https://github.com/Georginio-prod/Alo_Dowoto', icon: 'i-lucide-handshake', tags: ['Nuxt', 'TypeScript', 'Marketplace'], online: false, wip: true, cover: '/projects/worktogo.png' },
+  microread: { url: 'https://micro-read-app.vercel.app/', icon: 'i-lucide-book-open', tags: ['React', 'Vite', 'App'], online: true, wip: true },
+  meet: { url: 'https://meet-landing-page-kohl.vercel.app/', icon: 'i-lucide-video', tags: ['Vue', 'Responsive', 'Landing'], online: true },
+  pomodoro: { url: 'https://promodoro-app-iota.vercel.app/', icon: 'i-lucide-timer', tags: ['Vue', 'App', 'UI'], online: true },
+  audiophile: { url: 'https://audiophile-ecommerce-psi-ecru.vercel.app/', icon: 'i-lucide-headphones', tags: ['E-commerce', 'Front-end'], online: true },
+  fem: { url: 'https://www.frontendmentor.io/profile/Georginio-prod?tab=solutions', icon: 'i-lucide-code-2', tags: ['Challenges', 'HTML/CSS'], online: true }
 }
 
 const focusAreas = computed(() =>
@@ -44,16 +60,26 @@ const softSkills = computed(() =>
 const projects = computed(() =>
   (tm('projects.items') as any[]).map((item) => {
     const id = rt(item.id)
+    const meta = projectMeta[id] ?? { url: '', icon: 'i-lucide-folder', tags: [], online: false }
     return {
       id,
       title: rt(item.title),
       description: rt(item.description),
       status: rt(item.status),
       note: item.note ? rt(item.note) : '',
-      ...projectMeta[id]
+      ...meta
     }
   })
 )
+
+// Showcase carousel: one project at a time, cycled with the prev/next arrows.
+const activeProject = ref(0)
+const currentProject = computed(() => projects.value[activeProject.value])
+
+function goToProject(step: number) {
+  const count = projects.value.length
+  activeProject.value = (activeProject.value + step + count) % count
+}
 
 const experiences = computed(() =>
   (tm('experience.items') as any[]).map(e => ({
@@ -328,31 +354,61 @@ const contactLinks = computed(() => [
     <section id="projects" class="py-20 md:py-28 border-t border-default">
       <UContainer>
         <RevealOnScroll>
-          <div class="max-w-2xl mb-12">
-            <p class="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">{{ t('projects.label') }}</p>
-            <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-highlighted">
-              {{ t('projects.heading') }}
-            </h2>
-            <p class="mt-3 text-muted">
-              <span class="hidden lg:inline">{{ t('projects.subtitle') }}</span>
-              <span class="lg:hidden">{{ t('projects.subtitleTouch') }}</span>
-            </p>
+          <div class="flex flex-col gap-6 mb-10 sm:gap-8 sm:mb-12 lg:flex-row lg:items-end lg:justify-between lg:gap-10 lg:mb-14">
+            <div class="max-w-[720px]">
+              <span class="inline-flex items-center font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-dimmed">
+                <span class="inline-block size-1.5 rounded-full bg-secondary mr-2 shadow-[0_0_12px_var(--ui-secondary)]" />
+                {{ t('projects.label') }}
+              </span>
+              <h2 class="mt-4 sm:mt-[18px] text-[clamp(32px,7vw,72px)] font-bold leading-[0.95] tracking-[-0.025em] text-balance text-highlighted">
+                {{ t('projects.heading') }}
+              </h2>
+              <p class="mt-4 text-[15px] text-muted leading-[1.55]">{{ t('projects.subtitle') }}</p>
+            </div>
+
+            <div class="flex shrink-0 items-center gap-2">
+              <button
+                type="button"
+                class="inline-flex items-center justify-center rounded-full border border-accented p-3 text-highlighted transition-colors duration-200 hover:bg-elevated"
+                :aria-label="t('projects.prev')"
+                @click="goToProject(-1)"
+              >
+                <UIcon name="i-lucide-chevron-left" class="size-[18px]" />
+              </button>
+              <button
+                type="button"
+                class="inline-flex items-center justify-center rounded-full border border-accented p-3 text-highlighted transition-colors duration-200 hover:bg-elevated"
+                :aria-label="t('projects.next')"
+                @click="goToProject(1)"
+              >
+                <UIcon name="i-lucide-chevron-right" class="size-[18px]" />
+              </button>
+            </div>
           </div>
         </RevealOnScroll>
 
         <RevealOnScroll :delay="80">
-          <div class="relative overflow-x-auto scrollbar-hide pb-4 -mx-4 px-4 md:-mx-6 md:px-6">
-            <div class="flex gap-8 w-max">
-              <ProjectCard
-                v-for="project in projects"
-                :key="project.id"
-                :project="project"
-              />
-            </div>
+          <ProjectCard
+            v-if="currentProject"
+            :key="currentProject.id"
+            :project="currentProject"
+            :index="activeProject"
+            :total="projects.length"
+          />
+
+          <!-- Direct access to any project, mirroring the arrow navigation -->
+          <div class="mt-6 flex flex-wrap items-center gap-2">
+            <button
+              v-for="(project, i) in projects"
+              :key="project.id"
+              type="button"
+              class="h-2 rounded-full transition-all duration-200"
+              :class="i === activeProject ? 'w-8 bg-secondary' : 'w-2 bg-accented hover:bg-inverted/30'"
+              :aria-label="project.title"
+              :aria-current="i === activeProject"
+              @click="activeProject = i"
+            />
           </div>
-          <p class="mt-6 text-center text-sm text-dimmed">
-            {{ t('projects.scrollHint') }}
-          </p>
         </RevealOnScroll>
       </UContainer>
     </section>

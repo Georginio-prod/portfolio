@@ -38,21 +38,23 @@
   "projects": {
     "label": "Projets",
     "heading": "Ce sur quoi je travaille.",
-    "subtitle": "Survolez une carte pour plus de détails et visiter le projet.",
-    "subtitleTouch": "Touchez une carte pour ouvrir le projet.",
-    "scrollHint": "← Faites défiler horizontalement pour voir plus de projets →",
+    "subtitle": "Une sélection de projets livrés — clients, produits et exercices d'intégration.",
+    "prev": "Projet précédent",
+    "next": "Projet suivant",
     "visit": "Visiter le projet",
     "loading": "Chargement de l'aperçu…",
     "items": [
-      { "id": "cnc", "title": "CNC Portal", "description": "Portail web pour la CNC. En tant que membre de l'équipe de développement, je travaille sur l'intégration et les fonctionnalités de la plateforme.", "status": "Pro" },
-      { "id": "nova", "title": "Nova Graphik Visu", "description": "Site vitrine de l'agence créative Nova Graphik : services, portfolio et présentation de l'équipe.", "status": "Pro" },
-      { "id": "designer", "title": "Portfolio Graphiste", "description": "Portfolio conçu et développé pour un graphiste : présentation de ses créations, services et identité visuelle.", "status": "Pro" },
-      { "id": "orga", "title": "OrgaAfrica", "description": "Plateforme vitrine pour restaurants et commerces locaux : commandes, paiements et gestion des files d'attente.", "status": "Pro" },
-      { "id": "pulse", "title": "Pulse Score", "description": "Application de suivi de scores et de performances, actuellement en développement actif.", "status": "En cours" },
-      { "id": "meet", "title": "Meet — Landing Page", "description": "Landing page produit responsive, intégration pixel-perfect avec Vue.", "status": "" },
-      { "id": "pomodoro", "title": "Pomodoro App", "description": "Minuteur Pomodoro pour la productivité, avec paramètres et thèmes personnalisables.", "status": "" },
-      { "id": "audiophile", "title": "Audiophile E-commerce", "description": "Boutique e-commerce audio multi-pages : catalogue, panier et paiement.", "status": "" },
-      { "id": "fem", "title": "Frontend Mentor", "description": "Mes solutions aux défis Frontend Mentor : intégrations pixel-perfect, responsives et accessibles.", "status": "" }
+      { "id": "cnc", "title": "CNC Portal", "description": "Portail web pour la CNC. En tant que membre de l'équipe de développement, je travaille sur l'intégration et les fonctionnalités de la plateforme.", "status": "En cours", "note": "Mention spéciale : pour se connecter, il faut disposer d'un compte MetaMask." },
+      { "id": "nova", "title": "Nova Graphik Visu", "description": "Site vitrine de l'agence créative Nova Graphik : services, portfolio et présentation de l'équipe.", "status": "En production", "note": "Site livré et en ligne pour le client." },
+      { "id": "designer", "title": "Portfolio Graphiste", "description": "Portfolio conçu et développé pour un graphiste : présentation de ses créations, services et identité visuelle.", "status": "En production", "note": "Portfolio livré et en ligne pour le client." },
+      { "id": "orga", "title": "OrgaAfrica", "description": "Plateforme vitrine pour restaurants et commerces locaux : commandes, paiements et gestion des files d'attente.", "status": "Prestation", "note": "Vitrine et back-office livrés." },
+      { "id": "pulse", "title": "Pulse Score", "description": "Application de suivi de scores et de performances, actuellement en développement actif.", "status": "En cours", "note": "Version en ligne, développement toujours en cours." },
+      { "id": "worktogo", "title": "WorkTogo — Alo Dowoto", "description": "Place de marché de services togolaise reliant clients et prestataires (ménage, plomberie, électricité…), avec paiement en séquestre et portefeuille interne alimenté par mobile money.", "status": "En développement", "note": "Pas encore en ligne : développement en cours, le lien ouvre le dépôt GitHub." },
+      { "id": "microread", "title": "Page365", "description": "Micro-lectures quotidiennes : lire un livre en 3 à 5 minutes par jour, à partir du Project Gutenberg, avec envoi des extraits sur WhatsApp.", "status": "En cours", "note": "Démo en ligne, développement en cours." },
+      { "id": "meet", "title": "Meet — Landing Page", "description": "Landing page produit responsive, intégration pixel-perfect avec Vue.", "status": "Frontend Mentor", "note": "Défi Frontend Mentor — intégration en ligne." },
+      { "id": "pomodoro", "title": "Pomodoro App", "description": "Minuteur Pomodoro pour la productivité, avec paramètres et thèmes personnalisables.", "status": "Frontend Mentor", "note": "Défi Frontend Mentor — intégration en ligne." },
+      { "id": "audiophile", "title": "Audiophile E-commerce", "description": "Boutique e-commerce audio multi-pages : catalogue, panier et paiement.", "status": "Frontend Mentor", "note": "Défi Frontend Mentor — intégration en ligne." },
+      { "id": "fem", "title": "Frontend Mentor", "description": "Mes solutions aux défis Frontend Mentor : intégrations pixel-perfect, responsives et accessibles.", "status": "", "note": "Toutes mes solutions publiées sur Frontend Mentor." }
     ]
   },
   "experience": {
