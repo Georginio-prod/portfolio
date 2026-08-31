@@ -38,13 +38,13 @@
   "projects": {
     "label": "Projets",
     "heading": "Ce sur quoi je travaille.",
-    "subtitle": "Survolez une carte pour plus de détails et visiter le projet.",
-    "subtitleTouch": "Touchez une carte pour ouvrir le projet.",
-    "scrollHint": "← Faites défiler horizontalement pour voir plus de projets →",
+    "subtitle": "Une sélection de projets livrés — clients, produits et exercices d'intégration.",
+    "prev": "Projet précédent",
+    "next": "Projet suivant",
     "visit": "Visiter le projet",
     "loading": "Chargement de l'aperçu…",
     "items": [
-      { "id": "cnc", "title": "CNC Portal", "description": "Portail web pour la CNC. En tant que membre de l'équipe de développement, je travaille sur l'intégration et les fonctionnalités de la plateforme.", "status": "Pro" },
+      { "id": "cnc", "title": "CNC Portal", "description": "Portail web pour la CNC. En tant que membre de l'équipe de développement, je travaille sur l'intégration et les fonctionnalités de la plateforme.", "status": "Pro", "note": "Mention spéciale : pour se connecter, il faut disposer d'un compte MetaMask." },
       { "id": "nova", "title": "Nova Graphik Visu", "description": "Site vitrine de l'agence créative Nova Graphik : services, portfolio et présentation de l'équipe.", "status": "Pro" },
       { "id": "designer", "title": "Portfolio Graphiste", "description": "Portfolio conçu et développé pour un graphiste : présentation de ses créations, services et identité visuelle.", "status": "Pro" },
       { "id": "orga", "title": "OrgaAfrica", "description": "Plateforme vitrine pour restaurants et commerces locaux : commandes, paiements et gestion des files d'attente.", "status": "Pro" },

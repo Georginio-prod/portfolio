@@ -38,13 +38,13 @@
   "projects": {
     "label": "Projects",
     "heading": "What I'm working on.",
-    "subtitle": "Hover a card to read more details and visit the project.",
-    "subtitleTouch": "Tap a card to open the project.",
-    "scrollHint": "← Scroll horizontally to view more projects →",
+    "subtitle": "A selection of shipped work — client projects, products and build exercises.",
+    "prev": "Previous project",
+    "next": "Next project",
     "visit": "Visit Project",
     "loading": "Loading preview…",
     "items": [
-      { "id": "cnc", "title": "CNC Portal", "description": "Web portal for CNC. As a development team member, I work on integration and platform features.", "status": "Pro" },
+      { "id": "cnc", "title": "CNC Portal", "description": "Web portal for CNC. As a development team member, I work on integration and platform features.", "status": "Pro", "note": "Special note: a MetaMask account is required to sign in." },
       { "id": "nova", "title": "Nova Graphik Visu", "description": "Showcase website for the Nova Graphik creative agency: services, portfolio, and team presentation.", "status": "Pro" },
       { "id": "designer", "title": "Designer Portfolio", "description": "Portfolio designed and built for a graphic designer: showcasing their creative work, services, and visual identity.", "status": "Pro" },
       { "id": "orga", "title": "OrgaAfrica", "description": "Showcase platform for restaurants and local businesses: orders, payments, and queue management.", "status": "Pro" },
