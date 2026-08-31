@@ -27,6 +27,9 @@ const projectMeta: Record<string, { url: string, icon: string, tags: string[] }>
   designer: { url: 'https://my-portfolio-production-e928.up.railway.app/', icon: 'i-lucide-pen-tool', tags: ['Portfolio', 'Design', 'Pro'] },
   orga: { url: 'https://www.orga-africa.com/', icon: 'i-lucide-store', tags: ['Nuxt', 'Landing', 'Pro'] },
   pulse: { url: 'https://pulse-score-two.vercel.app/', icon: 'i-lucide-activity', tags: ['Vue', 'App', 'WIP'] },
+  // Not deployed yet: the link (and so the preview) points at the repository.
+  worktogo: { url: 'https://github.com/Georginio-prod/Alo_Dowoto', icon: 'i-lucide-handshake', tags: ['Nuxt', 'TypeScript', 'Marketplace'] },
+  microread: { url: 'https://micro-read-app.vercel.app/', icon: 'i-lucide-book-open', tags: ['React', 'Vite', 'App'] },
   meet: { url: 'https://meet-landing-page-kohl.vercel.app/', icon: 'i-lucide-video', tags: ['Vue', 'Responsive', 'Landing'] },
   pomodoro: { url: 'https://promodoro-app-iota.vercel.app/', icon: 'i-lucide-timer', tags: ['Vue', 'App', 'UI'] },
   audiophile: { url: 'https://audiophile-ecommerce-psi-ecru.vercel.app/', icon: 'i-lucide-headphones', tags: ['E-commerce', 'Front-end'] },

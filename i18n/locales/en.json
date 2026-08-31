@@ -44,14 +44,16 @@
     "visit": "Visit Project",
     "loading": "Loading preview…",
     "items": [
-      { "id": "cnc", "title": "CNC Portal", "description": "Web portal for CNC. As a development team member, I work on integration and platform features.", "status": "Pro", "note": "Special note: a MetaMask account is required to sign in." },
-      { "id": "nova", "title": "Nova Graphik Visu", "description": "Showcase website for the Nova Graphik creative agency: services, portfolio, and team presentation.", "status": "Pro" },
-      { "id": "designer", "title": "Designer Portfolio", "description": "Portfolio designed and built for a graphic designer: showcasing their creative work, services, and visual identity.", "status": "Pro" },
-      { "id": "orga", "title": "OrgaAfrica", "description": "Showcase platform for restaurants and local businesses: orders, payments, and queue management.", "status": "Pro" },
+      { "id": "cnc", "title": "CNC Portal", "description": "Web portal for CNC. As a development team member, I work on integration and platform features.", "status": "In progress", "note": "Special note: a MetaMask account is required to sign in." },
+      { "id": "nova", "title": "Nova Graphik Visu", "description": "Showcase website for the Nova Graphik creative agency: services, portfolio, and team presentation.", "status": "In production" },
+      { "id": "designer", "title": "Designer Portfolio", "description": "Portfolio designed and built for a graphic designer: showcasing their creative work, services, and visual identity.", "status": "In production" },
+      { "id": "orga", "title": "OrgaAfrica", "description": "Showcase platform for restaurants and local businesses: orders, payments, and queue management.", "status": "Client work" },
       { "id": "pulse", "title": "Pulse Score", "description": "Score and performance tracking application, currently in active development.", "status": "In progress" },
-      { "id": "meet", "title": "Meet — Landing Page", "description": "Responsive product landing page, pixel-perfect integration with Vue.", "status": "" },
-      { "id": "pomodoro", "title": "Pomodoro App", "description": "Pomodoro timer for productivity, with customizable settings and themes.", "status": "" },
-      { "id": "audiophile", "title": "Audiophile E-commerce", "description": "Multi-page audio e-commerce store: catalog, cart, and checkout.", "status": "" },
+      { "id":"worktogo", "title":"WorkTogo — Alo Dowoto", "description":"Togolese services marketplace connecting clients with providers (cleaning, plumbing, electrical work…), built around escrow payments and an internal wallet topped up by mobile money.", "status":"In development", "note":"Not online yet: the link opens the project’s GitHub repository." },
+      { "id":"microread", "title":"Page365", "description":"Daily micro-readings: finish a book in 3 to 5 minutes a day, sourced from Project Gutenberg, with excerpts delivered over WhatsApp.", "status":"In progress" },
+      { "id": "meet", "title": "Meet — Landing Page", "description": "Responsive product landing page, pixel-perfect integration with Vue.", "status": "Frontend Mentor" },
+      { "id": "pomodoro", "title": "Pomodoro App", "description": "Pomodoro timer for productivity, with customizable settings and themes.", "status": "Frontend Mentor" },
+      { "id": "audiophile", "title": "Audiophile E-commerce", "description": "Multi-page audio e-commerce store: catalog, cart, and checkout.", "status": "Frontend Mentor" },
       { "id": "fem", "title": "Frontend Mentor", "description": "My Frontend Mentor challenge solutions: pixel-perfect, responsive, and accessible builds.", "status": "" }
     ]
   },
