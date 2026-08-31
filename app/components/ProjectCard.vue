@@ -6,6 +6,8 @@ interface Project {
   url?: string
   status?: string
   note?: string
+  online?: boolean
+  cover?: string
   icon: string
 }
 
@@ -17,21 +19,27 @@ const props = defineProps<{
 
 const { t } = useI18n()
 
-// Live homepage thumbnail via microlink's image embed. Plain, natively lazy
-// <img>: the browser only fetches it when the card nears the viewport and it
-// never blocks rendering. The icon tile shows as a placeholder underneath and
-// stays if the screenshot fails to load.
-const previewSrc = computed(() =>
-  props.project.url
+// A local cover wins when the project provides one (nothing to screenshot for
+// something that isn't deployed). Otherwise: live homepage thumbnail via
+// microlink's image embed. Plain, natively lazy <img>, so the browser only
+// fetches it when the card nears the viewport and it never blocks rendering.
+// The icon tile shows as a placeholder underneath and stays if loading fails.
+const previewSrc = computed(() => {
+  if (props.project.cover) return props.project.cover
+  return props.project.url
     ? `https://api.microlink.io/?url=${encodeURIComponent(props.project.url)}&screenshot=true&embed=screenshot.url&meta=false&viewport.width=1280&viewport.height=800`
     : null
-)
+})
 
-// Bare hostname for the fake browser chrome address bar ("www.orga-africa.com").
+// Hostname for the fake browser chrome address bar ("www.orga-africa.com").
+// Offline projects link to their repository instead of a site, so those keep
+// the path too — otherwise the bar would just read "github.com" above a
+// screenshot of the app itself.
 const host = computed(() => {
   if (!props.project.url) return ''
   try {
-    return new URL(props.project.url).host
+    const { host, pathname } = new URL(props.project.url)
+    return !props.project.online && pathname !== '/' ? host + pathname : host
   } catch {
     return props.project.url
   }
@@ -43,8 +51,8 @@ const pad = (n: number) => String(n).padStart(2, '0')
 const loaded = ref(false)
 const failed = ref(false)
 
-// A new project means a new screenshot: reset the fade-in state.
-watch(() => props.project.url, () => {
+// A new project means a new image: reset the fade-in state.
+watch(previewSrc, () => {
   loaded.value = false
   failed.value = false
 })
@@ -54,14 +62,16 @@ watch(() => props.project.url, () => {
   <article
     class="grid grid-cols-1 lg:grid-cols-[1.4fr_1fr] rounded-2xl border border-default bg-elevated/40 overflow-hidden"
   >
-    <!-- Left: browser mockup -->
+    <!-- Left: browser mockup. The fixed aspect ratio is what keeps every cover
+         the same size — otherwise the panel stretches to match however long the
+         description on the right happens to be. -->
     <div
-      class="relative min-h-[280px] sm:min-h-[380px] lg:min-h-[460px] p-6 sm:p-8 lg:p-12 border-b lg:border-b-0 lg:border-r border-default bg-gradient-to-br from-elevated to-default"
+      class="flex items-center p-4 sm:p-5 lg:p-6 border-b lg:border-b-0 lg:border-r border-default bg-gradient-to-br from-elevated to-default"
     >
       <component
         :is="project.url ? 'a' : 'div'"
         v-bind="project.url ? { href: project.url, target: '_blank', rel: 'noopener noreferrer' } : {}"
-        class="group absolute inset-6 sm:inset-8 lg:inset-12 block rounded-xl border border-accented overflow-hidden bg-default"
+        class="group block w-full aspect-[16/10] rounded-xl border border-accented overflow-hidden bg-default"
       >
         <!-- Window chrome -->
         <div class="h-8 flex items-center gap-1.5 pl-3.5 bg-accented/60 border-b border-default">
@@ -107,7 +117,7 @@ watch(() => props.project.url, () => {
         {{ project.title }}
       </h3>
 
-      <p class="mt-3.5 text-sm sm:text-base text-muted leading-relaxed">
+      <p class="mt-3.5 text-[14px] sm:text-[15px] text-muted leading-[1.55]">
         {{ project.description }}
       </p>
 
@@ -121,9 +131,12 @@ watch(() => props.project.url, () => {
         </span>
       </div>
 
+      <!-- Special mention: blue once the project is reachable online, amber
+           while it is still unpublished. -->
       <p
         v-if="project.note"
-        class="mt-5 pt-4 border-t border-default font-mono text-xs text-secondary tracking-[0.04em] leading-relaxed"
+        class="mt-5 pt-4 border-t border-default font-mono text-[12px] tracking-[0.04em] leading-[1.5]"
+        :class="project.online ? 'text-secondary' : 'text-warning'"
       >
         {{ project.note }}
       </p>
