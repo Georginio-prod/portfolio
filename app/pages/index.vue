@@ -29,19 +29,20 @@ interface ProjectMeta {
   icon: string
   tags: string[]
   online: boolean
+  wip?: boolean
   cover?: string
 }
 
 const projectMeta: Record<string, ProjectMeta> = {
-  cnc: { url: 'https://app.cncportal.io/login', icon: 'i-lucide-building-2', tags: ['Vue', 'Team', 'Pro'], online: true },
+  cnc: { url: 'https://app.cncportal.io/login', icon: 'i-lucide-building-2', tags: ['Vue', 'Team', 'Pro'], online: true, wip: true },
   nova: { url: 'https://novagraphikvisu.com/', icon: 'i-lucide-palette', tags: ['Nuxt', 'Landing', 'Pro'], online: true },
   designer: { url: 'https://my-portfolio-production-e928.up.railway.app/', icon: 'i-lucide-pen-tool', tags: ['Portfolio', 'Design', 'Pro'], online: true },
   orga: { url: 'https://www.orga-africa.com/', icon: 'i-lucide-store', tags: ['Nuxt', 'Landing', 'Pro'], online: true },
-  pulse: { url: 'https://pulse-score-two.vercel.app/', icon: 'i-lucide-activity', tags: ['Vue', 'App', 'WIP'], online: true },
+  pulse: { url: 'https://pulse-score-two.vercel.app/', icon: 'i-lucide-activity', tags: ['Vue', 'App', 'WIP'], online: true, wip: true },
   // Not deployed yet, so there is nothing to screenshot: the card uses a local
   // cover and the link points at the repository.
-  worktogo: { url: 'https://github.com/Georginio-prod/Alo_Dowoto', icon: 'i-lucide-handshake', tags: ['Nuxt', 'TypeScript', 'Marketplace'], online: false, cover: '/projects/worktogo.png' },
-  microread: { url: 'https://micro-read-app.vercel.app/', icon: 'i-lucide-book-open', tags: ['React', 'Vite', 'App'], online: true },
+  worktogo: { url: 'https://github.com/Georginio-prod/Alo_Dowoto', icon: 'i-lucide-handshake', tags: ['Nuxt', 'TypeScript', 'Marketplace'], online: false, wip: true, cover: '/projects/worktogo.png' },
+  microread: { url: 'https://micro-read-app.vercel.app/', icon: 'i-lucide-book-open', tags: ['React', 'Vite', 'App'], online: true, wip: true },
   meet: { url: 'https://meet-landing-page-kohl.vercel.app/', icon: 'i-lucide-video', tags: ['Vue', 'Responsive', 'Landing'], online: true },
   pomodoro: { url: 'https://promodoro-app-iota.vercel.app/', icon: 'i-lucide-timer', tags: ['Vue', 'App', 'UI'], online: true },
   audiophile: { url: 'https://audiophile-ecommerce-psi-ecru.vercel.app/', icon: 'i-lucide-headphones', tags: ['E-commerce', 'Front-end'], online: true },

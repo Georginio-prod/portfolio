@@ -7,6 +7,7 @@ interface Project {
   status?: string
   note?: string
   online?: boolean
+  wip?: boolean
   cover?: string
   icon: string
 }
@@ -109,7 +110,21 @@ watch(previewSrc, () => {
     <!-- Right: meta panel -->
     <div class="p-6 sm:p-8 lg:p-11 flex flex-col">
       <div class="font-mono text-[11px] tracking-[0.14em] uppercase text-dimmed">
-        <span class="text-primary">● {{ project.status || project.tags[0] }}</span>
+        <!-- Unfinished work gets a pulsing amber dot — the signal that the
+             project is still moving, whether or not it is already online. -->
+        <span
+          class="inline-flex items-center gap-2 align-[1px]"
+          :class="project.wip ? 'text-warning' : 'text-primary'"
+        >
+          <span class="relative flex size-1.5">
+            <span
+              v-if="project.wip"
+              class="absolute inline-flex h-full w-full rounded-full bg-current opacity-75 animate-ping motion-reduce:hidden"
+            />
+            <span class="relative inline-flex size-1.5 rounded-full bg-current" />
+          </span>
+          {{ project.status || project.tags[0] }}
+        </span>
         <template v-if="host">&nbsp;·&nbsp;{{ host }}</template>
       </div>
 
