@@ -1,16 +1,5 @@
 <script setup lang="ts">
-interface Project {
-  title: string
-  description: string
-  tags: string[]
-  url?: string
-  status?: string
-  note?: string
-  online?: boolean
-  wip?: boolean
-  cover?: string
-  icon: string
-}
+import type { Project } from '~/composables/useProjects'
 
 const props = defineProps<{
   project: Project
@@ -25,11 +14,15 @@ const { t } = useI18n()
 // microlink's image embed. Plain, natively lazy <img>, so the browser only
 // fetches it when the card nears the viewport and it never blocks rendering.
 // The icon tile shows as a placeholder underneath and stays if loading fails.
+//
+// When the local cover 404s (files haven't been saved yet), `coverFailed`
+// flips and the computed falls through to the microlink URL — so the card
+// always shows *something* for online projects.
+const coverFailed = ref(false)
+
 const previewSrc = computed(() => {
-  if (props.project.cover) return props.project.cover
-  return props.project.url
-    ? `https://api.microlink.io/?url=${encodeURIComponent(props.project.url)}&screenshot=true&embed=screenshot.url&meta=false&viewport.width=1280&viewport.height=800`
-    : null
+  if (props.project.cover && !coverFailed.value) return props.project.cover
+  return props.project.url && props.project.online ? screenshotUrl(props.project.url) : null
 })
 
 // Hostname for the fake browser chrome address bar ("www.orga-africa.com").
@@ -57,6 +50,25 @@ watch(previewSrc, () => {
   loaded.value = false
   failed.value = false
 })
+
+// When a cover 404s we also need to reset the general image state so the
+// microlink fallback URL gets a fresh chance.
+watch(() => props.project.id, () => {
+  coverFailed.value = false
+  loaded.value = false
+  failed.value = false
+})
+
+function onPreviewError() {
+  // Local cover failed → try microlink next (coverFailed flips previewSrc).
+  // If microlink also fails → give up (failed = true → icon stays).
+  if (props.project.cover && !coverFailed.value) {
+    coverFailed.value = true
+    loaded.value = false
+  } else {
+    failed.value = true
+  }
+}
 </script>
 
 <template>
@@ -101,7 +113,7 @@ watch(previewSrc, () => {
             class="absolute inset-0 h-full w-full object-cover object-top transition-[opacity,transform] duration-500 ease-out group-hover:scale-[1.02]"
             :class="loaded ? 'opacity-100' : 'opacity-0'"
             @load="loaded = true"
-            @error="failed = true"
+            @error="onPreviewError"
           >
         </div>
       </component>
@@ -156,7 +168,20 @@ watch(previewSrc, () => {
         {{ project.note }}
       </p>
 
-      <div class="flex items-center justify-between gap-4 mt-auto pt-7">
+      <div class="flex flex-wrap items-center gap-3 mt-auto pt-7">
+        <!-- Primary path: the full case study. The live site stays reachable
+             next to it, one step down in weight. -->
+        <NuxtLink
+          :to="`/projects/${project.id}`"
+          class="group inline-flex items-center gap-2.5 rounded-full bg-inverted px-[22px] py-3.5 font-semibold text-[15px] text-inverted whitespace-nowrap transition-opacity duration-200 hover:opacity-90"
+        >
+          {{ t('projects.viewProject') }}
+          <UIcon
+            name="i-lucide-arrow-right"
+            class="size-4 transition-transform duration-200 group-hover:translate-x-0.5"
+          />
+        </NuxtLink>
+
         <a
           v-if="project.url"
           :href="project.url"
