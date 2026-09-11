@@ -92,13 +92,13 @@ const projectMeta: Record<string, ProjectMeta> = {
       '/projects/pulse-mobile.png'
     ]
   },
-  // Not deployed yet, so there is nothing to screenshot: the card uses a local
-  // cover and the link points at the repository.
+  // Deployed on Railway. The local cover stays as the card image; the detail
+  // page gallery falls through to generated screenshots of the live site.
   worktogo: {
-    url: 'https://github.com/Georginio-prod/Alo_Dowoto',
+    url: 'https://alodowoto-production.up.railway.app/',
     icon: 'i-lucide-handshake',
     tags: ['Nuxt', 'TypeScript', 'Marketplace'],
-    online: false,
+    online: true,
     wip: true,
     cover: '/projects/worktogo.png',
     stack: ['Nuxt.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Mobile Money', 'Escrow']
