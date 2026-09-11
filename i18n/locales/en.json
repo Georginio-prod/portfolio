@@ -3,43 +3,44 @@
     "greeting": "Hi",
     "namePrefix": "I'm",
     "name": "Komla Etonam Georges EKLOU",
-    "role": "Full Stack & Web3 Developer",
-    "bio": "Computer Science graduate from {university} specializing in {focus}. I build full-stack applications, decentralized integrations, and polished interfaces — currently contributing to the {company} development team in Lomé, Togo.",
+    "role": "Full Stack Web & Web3 Developer",
+    "bio": "Computer Science graduate from {university} specializing in {focus}. I build reliable web products, decentralized integrations, and polished interfaces for teams and people with ambitious ideas.",
     "bioUniversity": "UCAO / UUT",
-    "bioFocus": "web development and Web3",
-    "bioCompany": "CNC",
+    "bioFocus": "full-stack web development and Web3",
     "skillsTitle": "Technical Skills",
     "focusTitle": "Focus Areas",
     "tagline": "I enjoy turning complex ideas into clean, reliable products at the intersection of web, blockchain, and user experience.",
-    "ctaProjects": "View my projects",
-    "ctaContact": "Get in touch",
+    "ctaProjects": "View selected work",
+    "ctaContact": "Contact me",
+    "ctaCv": "Download CV",
+    "cvFrench": "French CV",
+    "cvEnglish": "English CV",
     "basedIn": "Based in",
     "location": "Lomé, Togo",
-    "openToWork": "Open to work"
+    "openToWork": "Available for opportunities"
   },
   "focusAreas": [
     {
-      "title": "Web Applications",
+      "title": "Web Products",
       "description": "Full-stack products with Vue, Nuxt, and React"
     },
     {
-      "title": "Web3 & Blockchain",
+      "title": "Web3 Integrations",
       "description": "DApps, smart contracts & decentralized integrations"
     },
     {
-      "title": "UI Engineering",
+      "title": "Interface Engineering",
       "description": "Pixel-perfect, responsive & accessible interfaces"
     }
   ],
   "about": {
     "label": "About",
-    "heading": "Rigor, curiosity, and attention to detail.",
-    "p1": "With a {degree} (application development specialization), I build web and Web3 applications with Vue, Nuxt, and React. I currently contribute to the {company} development team.",
+    "heading": "A developer who builds with care.",
+    "p1": "With a {degree} (application development specialization), I build web and Web3 applications with Vue, Nuxt, and React.",
     "p1Degree": "Bachelor's in Computer Science",
-    "p1Company": "CNC",
-    "p2": "I'm now looking to expand into {devops}, cloud, and cybersecurity (SysOps / SecOps).",
+    "p2": "I am continuously expanding my knowledge of {devops}, cloud, and cybersecurity (SysOps / SecOps).",
     "p2Devops": "DevOps",
-    "location": "Zanguéra, Lomé — Togo",
+    "location": "Lomé, Togo",
     "languages": "French · English (B1)",
     "phone": "+228 98 93 85 55",
     "softSkills": [
@@ -50,10 +51,30 @@
       "Reliability"
     ]
   },
+  "skillGroups": [
+    {
+      "title": "Frontend",
+      "items": ["Vue.js", "Nuxt.js", "React", "TypeScript", "Tailwind CSS"]
+    },
+    {
+      "title": "Backend & tools",
+      "items": ["Node.js", "APIs", "Git / Git Flow", "Docker", "Linux"]
+    },
+    {
+      "title": "Web3 & product",
+      "items": ["Solidity", "Smart-contract integration", "Figma", "UI/UX"]
+    }
+  ],
   "projects": {
     "label": "Projects",
     "heading": "What I'm working on.",
-    "subtitle": "A selection of shipped work — client projects, products and build exercises.",
+    "subtitle": "Selected professional work, personal products, and technical exercises.",
+    "filters": {
+      "featured": "Selected work",
+      "all": "All projects",
+      "learning": "Learning projects"
+    },
+    "filterLabel": "Project filters",
     "prev": "Previous project",
     "next": "Next project",
     "visit": "Visit Project",
@@ -151,7 +172,7 @@
     "viewProject": "View project",
     "viewWebsite": "View website",
     "viewCode": "View code",
-    "background": "Project background",
+    "background": "Context & contribution",
     "previews": "Static previews",
     "backToProjects": "All projects",
     "ctaHeading": "Interested in working together?",
@@ -162,12 +183,24 @@
     "heading": "My professional journey.",
     "items": [
       {
-        "period": "Since June 2025",
-        "role": "Junior Web3 Developer",
+        "period": "Since May 2025",
+        "role": "Full Stack Developer & Smart Contract Integrator",
+        "company": "Globe & Citizen",
+        "place": "Canada",
+        "points": [
+          "Integrating smart contracts.",
+          "Building back-end and front-end features.",
+          "Creating tests."
+        ]
+      },
+      {
+        "period": "Since March 2025",
+        "role": "Web Developer",
         "company": "W3 Frame",
         "place": "Lomé, Avédji — Togo",
         "points": [
-          "Building decentralized applications and Web3 integrations."
+          "Building WordPress websites.",
+          "Delivering web-development training."
         ]
       },
       {
@@ -208,14 +241,8 @@
       {
         "period": "Nov 2021 – Jul 2024",
         "title": "Bachelor's in Engineering Sciences — Computer Science",
-        "detail": "Application Development specialization · Good standing (Bachelor +3)",
+        "detail": "Application Development specialization · Honors: Assez bien (Good)",
         "school": "UCAO / UUT — Lomé, Togo"
-      },
-      {
-        "period": "Nov 2019 – Nov 2020",
-        "title": "Scientific Baccalaureate (Series D)",
-        "detail": "Second part",
-        "school": "Lycée Moderne d'Adidogomé — Lomé, Togo"
       }
     ]
   },
@@ -231,15 +258,24 @@
   "contact": {
     "label": "Connect",
     "heading": "Let's stay in touch.",
-    "subtitle": "Open to opportunities, collaborations, and conversations around web and Web3 development.",
+    "subtitle": "Available for freelance, full-time and collaborative opportunities. I usually reply within 24–48 hours.",
     "emailLabel": "Email",
     "phoneLabel": "Phone",
-    "githubLabel": "GitHub"
+    "githubLabel": "GitHub",
+    "linkedinLabel": "LinkedIn"
   },
   "footer": {
     "role": "Full Stack Developer"
   },
   "switcher": {
     "label": "Change language"
+  },
+  "navigation": {
+    "label": "Portfolio navigation",
+    "menu": "Menu",
+    "home": "Home",
+    "work": "Work",
+    "experience": "Experience",
+    "contact": "Contact"
   }
 }

@@ -4,6 +4,8 @@ const { t } = useI18n()
 
 <template>
   <div class="min-h-screen flex flex-col bg-default text-default">
+    <PortfolioNav />
+
     <!-- Language switch + theme toggle (fixed, top-right) -->
     <div class="fixed top-3 right-3 sm:top-4 sm:right-4 z-50 flex items-center gap-2">
       <LanguageSwitcher />
@@ -28,6 +30,12 @@ const { t } = useI18n()
             rel="noopener noreferrer"
             class="hover:text-highlighted transition-colors duration-300"
           >GitHub</a>
+          <a
+            href="https://www.linkedin.com/in/komla-etonam-georges-eklou-68518b23b/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-highlighted transition-colors duration-300"
+          >LinkedIn</a>
           <a
             href="https://www.frontendmentor.io/profile/Georginio-prod?tab=solutions"
             target="_blank"

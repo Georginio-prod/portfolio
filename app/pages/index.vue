@@ -31,12 +31,47 @@ const softSkills = computed(() =>
   (tm('about.softSkills') as any[]).map(s => rt(s))
 )
 
-// Showcase carousel: one project at a time, cycled with the prev/next arrows.
+const skillGroups = computed(() =>
+  (tm('skillGroups') as any[]).map(group => ({
+    title: rt(group.title),
+    items: (group.items as any[]).map(item => rt(item))
+  }))
+)
+
+type ProjectFilter = 'featured' | 'all' | 'learning'
+
+const featuredProjectIds = ['cnc', 'nova', 'designer', 'orga']
+const learningProjectIds = ['meet', 'pomodoro', 'audiophile', 'fem']
+const activeFilter = ref<ProjectFilter>('featured')
 const activeProject = ref(0)
-const currentProject = computed(() => projects.value[activeProject.value])
+
+const projectFilters = computed(() => [
+  { id: 'featured' as const, label: t('projects.filters.featured') },
+  { id: 'all' as const, label: t('projects.filters.all') },
+  { id: 'learning' as const, label: t('projects.filters.learning') }
+])
+
+const visibleProjects = computed(() => {
+  if (activeFilter.value === 'featured') {
+    return projects.value.filter(project => featuredProjectIds.includes(project.id))
+  }
+
+  if (activeFilter.value === 'learning') {
+    return projects.value.filter(project => learningProjectIds.includes(project.id))
+  }
+
+  return projects.value
+})
+
+const currentProject = computed(() => visibleProjects.value[activeProject.value])
+
+function setProjectFilter(filter: ProjectFilter) {
+  activeFilter.value = filter
+  activeProject.value = 0
+}
 
 function goToProject(step: number) {
-  const count = projects.value.length
+  const count = visibleProjects.value.length
   activeProject.value = (activeProject.value + step + count) % count
 }
 
@@ -86,6 +121,14 @@ const contactLinks = computed(() => [
     value: 'Georginio-prod',
     href: 'https://github.com/Georginio-prod',
     icon: 'i-simple-icons-github',
+    wide: false
+  },
+  {
+    key: 'linkedin',
+    label: t('contact.linkedinLabel'),
+    value: 'Komla Etonam Georges EKLOU',
+    href: 'https://www.linkedin.com/in/komla-etonam-georges-eklou-68518b23b/',
+    icon: 'i-simple-icons-linkedin',
     wide: false
   }
 ])
@@ -157,9 +200,6 @@ const contactLinks = computed(() => [
               <template #focus>
                 <span class="italic text-primary">{{ t('hero.bioFocus') }}</span>
               </template>
-              <template #company>
-                <span class="font-semibold text-highlighted">{{ t('hero.bioCompany') }}</span>
-              </template>
             </i18n-t>
 
             <div class="hero-animate hero-animate-delay-3">
@@ -218,6 +258,7 @@ const contactLinks = computed(() => [
               >
                 {{ t('hero.ctaContact') }}
               </UButton>
+              <CvDownloadMenu />
             </div>
           </div>
 
@@ -268,9 +309,6 @@ const contactLinks = computed(() => [
                 <template #degree>
                   <span class="text-highlighted font-medium">{{ t('about.p1Degree') }}</span>
                 </template>
-                <template #company>
-                  <span class="text-highlighted font-medium">{{ t('about.p1Company') }}</span>
-                </template>
               </i18n-t>
               <i18n-t keypath="about.p2" tag="p" scope="global" class="mt-4 text-muted leading-relaxed">
                 <template #devops>
@@ -293,6 +331,16 @@ const contactLinks = computed(() => [
                 <p class="flex items-center gap-3">
                   <UIcon name="i-lucide-phone" class="size-5 text-primary shrink-0" /> {{ t('about.phone') }}
                 </p>
+              </div>
+              <div class="flex flex-wrap gap-2">
+                <div
+                  v-for="group in skillGroups"
+                  :key="group.title"
+                  class="rounded-xl bg-elevated px-3 py-2 ring-1 ring-default"
+                >
+                  <h3 class="text-xs font-semibold uppercase tracking-wider text-dimmed">{{ group.title }}</h3>
+                  <p class="mt-1 text-xs leading-relaxed text-muted">{{ group.items.join(' · ') }}</p>
+                </div>
               </div>
               <div class="flex flex-wrap gap-2">
                 <span
@@ -323,6 +371,19 @@ const contactLinks = computed(() => [
                 {{ t('projects.heading') }}
               </h2>
               <p class="mt-4 text-[15px] text-muted leading-[1.55]">{{ t('projects.subtitle') }}</p>
+              <div class="mt-5 flex flex-wrap gap-2" :aria-label="t('projects.filterLabel')">
+                <button
+                  v-for="filter in projectFilters"
+                  :key="filter.id"
+                  type="button"
+                  class="rounded-full border px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  :class="activeFilter === filter.id ? 'border-primary bg-primary/10 text-primary' : 'border-default text-muted hover:bg-elevated hover:text-highlighted'"
+                  :aria-pressed="activeFilter === filter.id"
+                  @click="setProjectFilter(filter.id)"
+                >
+                  {{ filter.label }}
+                </button>
+              </div>
             </div>
 
             <div class="flex shrink-0 items-center gap-2">
@@ -352,13 +413,13 @@ const contactLinks = computed(() => [
             :key="currentProject.id"
             :project="currentProject"
             :index="activeProject"
-            :total="projects.length"
+              :total="visibleProjects.length"
           />
 
           <!-- Direct access to any project, mirroring the arrow navigation -->
           <div class="mt-6 flex flex-wrap items-center gap-2">
             <button
-              v-for="(project, i) in projects"
+              v-for="(project, i) in visibleProjects"
               :key="project.id"
               type="button"
               class="h-2 rounded-full transition-all duration-200"

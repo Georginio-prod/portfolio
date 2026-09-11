@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   i18n: {
     strategy: 'no_prefix',
     defaultLocale: 'en',
-    lazy: false,
+    baseUrl: 'https://georginio.w3frame.com',
     langDir: 'locales',
     // English is always the first-visit default (browser-language auto-detection
     // is off on purpose). The visitor's manual choice is restored from a cookie
@@ -42,10 +42,18 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' },
         {
           name: 'description',
-          content: 'Portfolio of Komla Etonam Georges EKLOU — Full Stack & Web3 developer. Projects, skills, and experience.'
-        }
+          content: 'Portfolio of Komla Etonam Georges EKLOU — Full Stack Web & Web3 developer. Projects, skills, experience and CV.'
+        },
+        { property: 'og:title', content: 'Komla Etonam Georges EKLOU — Portfolio' },
+        { property: 'og:description', content: 'Full Stack Web & Web3 developer. Explore selected work, skills and experience.' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://georginio.w3frame.com/' },
+        { property: 'og:image', content: 'https://georginio.w3frame.com/profile.jpg' }
       ],
-      link: [{ rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }]
+      link: [
+        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'canonical', href: 'https://georginio.w3frame.com/' }
+      ]
     }
   }
 })
