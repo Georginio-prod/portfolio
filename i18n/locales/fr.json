@@ -104,8 +104,8 @@
         "title": "WorkTogo — Alo Dowoto",
         "description": "Place de marché de services togolaise reliant clients et prestataires (ménage, plomberie, électricité…), avec paiement en séquestre et portefeuille interne alimenté par mobile money.",
         "status": "En développement",
-        "note": "Pas encore en ligne : développement en cours, le lien ouvre le dépôt GitHub.",
-        "background": "WorkTogo (Alo Dowoto) est une marketplace de services pour le Togo, qui met en relation des clients et des prestataires locaux — ménage, plomberie, électricité, entre autres. Le vrai problème de conception est la confiance : aucune des deux parties ne veut avancer en premier. La réponse est le séquestre : le client provisionne la prestation à l'avance via un portefeuille interne rechargeable par mobile money, et le prestataire est payé à la livraison. Le développement est en cours ; la plateforme n'est pas encore déployée, le lien ouvre donc le dépôt."
+        "note": "Version en ligne, développement toujours en cours.",
+        "background": "WorkTogo (Alo Dowoto) est une marketplace de services pour le Togo, qui met en relation des clients et des prestataires locaux — ménage, plomberie, électricité, entre autres. Le vrai problème de conception est la confiance : aucune des deux parties ne veut avancer en premier. La réponse est le séquestre : le client provisionne la prestation à l'avance via un portefeuille interne rechargeable par mobile money, et le prestataire est payé à la livraison. Le développement est en cours ; la plateforme est déployée et la version en ligne reflète l'état courant."
       },
       {
         "id": "microread",
