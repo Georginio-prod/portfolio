@@ -104,8 +104,8 @@
         "title": "WorkTogo — Alo Dowoto",
         "description": "Togolese services marketplace connecting clients with providers (cleaning, plumbing, electrical work…), built around escrow payments and an internal wallet topped up by mobile money.",
         "status": "In development",
-        "note": "Not online yet: development in progress, the link opens the GitHub repository.",
-        "background": "WorkTogo (Alo Dowoto) is a services marketplace for Togo, connecting clients with local providers — cleaning, plumbing, electrical work and more. The design problem is trust: neither side wants to move first. The answer is escrow — the client funds the job up front into an internal wallet topped up by mobile money, and the provider is paid on completion. Development is ongoing; the platform is not deployed yet, so the link opens the repository."
+        "note": "Live version online, development still ongoing.",
+        "background": "WorkTogo (Alo Dowoto) is a services marketplace for Togo, connecting clients with local providers — cleaning, plumbing, electrical work and more. The design problem is trust: neither side wants to move first. The answer is escrow — the client funds the job up front into an internal wallet topped up by mobile money, and the provider is paid on completion. Development is ongoing; the platform is deployed and the live version reflects the current state."
       },
       {
         "id": "microread",
