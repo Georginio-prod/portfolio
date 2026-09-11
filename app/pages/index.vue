@@ -7,16 +7,21 @@ const { t, tm, rt } = useI18n()
 
 // Language-agnostic tech list (proper names stay the same in every locale).
 const heroSkills = [
-  'Vue.js',
-  'Nuxt.js',
+  'HTML / CSS',
   'JavaScript',
   'TypeScript',
-  'Solidity',
-  'Tailwind CSS',
+  'Vue.js',
+  'Nuxt.js',
   'React',
+  'Tailwind CSS',
   'Node.js',
+  'Express',
+  'Blockchain',
+  'Solidity',
+  'Hardhat',
   'Web3',
-  'Git'
+  'Git / GitHub',
+  'Docker'
 ]
 
 // Project data (links, icons, tags, stack + the translated prose) lives in the

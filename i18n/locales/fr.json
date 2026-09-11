@@ -54,15 +54,15 @@
   "skillGroups": [
     {
       "title": "Front-end",
-      "items": ["Vue.js", "Nuxt.js", "React", "TypeScript", "Tailwind CSS"]
+      "items": ["HTML / CSS", "JavaScript", "TypeScript", "Vue.js", "Nuxt.js", "React", "Tailwind CSS"]
     },
     {
       "title": "Back-end & outils",
-      "items": ["Node.js", "APIs", "Git / Git Flow", "Docker", "Linux"]
+      "items": ["Node.js", "Express", "APIs REST", "MongoDB", "Firebase", "Docker", "Linux", "Git / GitHub", "Git Flow"]
     },
     {
       "title": "Web3 & produit",
-      "items": ["Solidity", "Intégration de smart contracts", "Figma", "UI/UX"]
+      "items": ["Blockchain", "Solidity", "Hardhat", "Intégration de smart contracts", "Figma", "UI/UX"]
     }
   ],
   "projects": {
