@@ -87,7 +87,13 @@ function onPreviewError(src: string) {
 
 useHead(() => ({
   title: project.value ? `${project.value.title} — Komla Etonam Georges EKLOU` : 'Project',
-  meta: [{ name: 'description', content: project.value?.description ?? '' }]
+  meta: [
+    { name: 'description', content: project.value?.description ?? '' },
+    { property: 'og:title', content: project.value ? `${project.value.title} — Komla Etonam Georges EKLOU` : 'Project' },
+    { property: 'og:description', content: project.value?.description ?? '' },
+    { property: 'og:type', content: 'website' }
+  ],
+  link: [{ rel: 'canonical', href: `https://georginio.w3frame.com/projects/${project.value?.id ?? ''}` }]
 }))
 </script>
 

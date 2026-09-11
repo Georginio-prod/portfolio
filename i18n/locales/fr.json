@@ -3,43 +3,44 @@
     "greeting": "Salut",
     "namePrefix": "Je suis",
     "name": "Komla Etonam Georges EKLOU",
-    "role": "Développeur Full Stack & Web3",
-    "bio": "Diplômé en informatique de {university}, spécialisé en {focus}. Je conçois des applications full-stack, des intégrations décentralisées et des interfaces soignées — actuellement au sein de l'équipe de développement de {company} à Lomé, Togo.",
+    "role": "Développeur Web Full Stack & Web3",
+    "bio": "Diplômé en informatique de {university}, spécialisé en {focus}. Je conçois des produits web fiables, des intégrations décentralisées et des interfaces soignées pour des équipes et des personnes porteuses d'idées ambitieuses.",
     "bioUniversity": "UCAO / UUT",
-    "bioFocus": "développement web et Web3",
-    "bioCompany": "CNC",
+    "bioFocus": "développement web full stack et Web3",
     "skillsTitle": "Compétences techniques",
     "focusTitle": "Domaines de prédilection",
     "tagline": "J'aime transformer des idées complexes en produits clairs et fiables, à l'intersection du web, de la blockchain et de l'expérience utilisateur.",
-    "ctaProjects": "Voir mes projets",
+    "ctaProjects": "Voir mes réalisations",
     "ctaContact": "Me contacter",
+    "ctaCv": "Télécharger mon CV",
+    "cvFrench": "CV français",
+    "cvEnglish": "CV anglais",
     "basedIn": "Basé à",
     "location": "Lomé, Togo",
-    "openToWork": "Ouvert aux opportunités"
+    "openToWork": "Disponible pour des opportunités"
   },
   "focusAreas": [
     {
-      "title": "Applications web",
+      "title": "Produits web",
       "description": "Produits full-stack avec Vue, Nuxt et React"
     },
     {
-      "title": "Web3 & Blockchain",
+      "title": "Intégrations Web3",
       "description": "DApps, smart contracts & intégrations décentralisées"
     },
     {
-      "title": "Ingénierie UI",
+      "title": "Ingénierie d'interfaces",
       "description": "Interfaces pixel-perfect, responsives & accessibles"
     }
   ],
   "about": {
     "label": "À propos",
-    "heading": "Rigueur, curiosité et sens du détail.",
-    "p1": "Titulaire d'une {degree} (spécialité développement d'applications), je conçois des applications web et Web3 avec Vue, Nuxt et React. Je contribue actuellement à l'équipe de développement de {company}.",
+    "heading": "Un développeur attentif à la qualité.",
+    "p1": "Titulaire d'une {degree} (spécialité développement d'applications), je conçois des applications web et Web3 avec Vue, Nuxt et React.",
     "p1Degree": "Licence en informatique",
-    "p1Company": "CNC",
-    "p2": "Je souhaite aujourd'hui m'ouvrir au {devops}, au cloud et à la cybersécurité (SysOps / SecOps).",
+    "p2": "J'élargis continuellement mes connaissances en {devops}, cloud et cybersécurité (SysOps / SecOps).",
     "p2Devops": "DevOps",
-    "location": "Zanguéra, Lomé — Togo",
+    "location": "Lomé, Togo",
     "languages": "Français · Anglais (B1)",
     "phone": "+228 98 93 85 55",
     "softSkills": [
@@ -50,10 +51,30 @@
       "Fiabilité"
     ]
   },
+  "skillGroups": [
+    {
+      "title": "Front-end",
+      "items": ["Vue.js", "Nuxt.js", "React", "TypeScript", "Tailwind CSS"]
+    },
+    {
+      "title": "Back-end & outils",
+      "items": ["Node.js", "APIs", "Git / Git Flow", "Docker", "Linux"]
+    },
+    {
+      "title": "Web3 & produit",
+      "items": ["Solidity", "Intégration de smart contracts", "Figma", "UI/UX"]
+    }
+  ],
   "projects": {
     "label": "Projets",
     "heading": "Ce sur quoi je travaille.",
-    "subtitle": "Une sélection de projets livrés — clients, produits et exercices d'intégration.",
+    "subtitle": "Une sélection de réalisations professionnelles, de produits personnels et d'exercices techniques.",
+    "filters": {
+      "featured": "Réalisations sélectionnées",
+      "all": "Tous les projets",
+      "learning": "Projets d'apprentissage"
+    },
+    "filterLabel": "Filtres des projets",
     "prev": "Projet précédent",
     "next": "Projet suivant",
     "visit": "Visiter le projet",
@@ -151,7 +172,7 @@
     "viewProject": "Voir le projet",
     "viewWebsite": "Voir le site",
     "viewCode": "Voir le code",
-    "background": "Contexte du projet",
+    "background": "Contexte & contribution",
     "previews": "Aperçus",
     "backToProjects": "Tous les projets",
     "ctaHeading": "Envie de travailler ensemble ?",
@@ -162,12 +183,24 @@
     "heading": "Mon parcours professionnel.",
     "items": [
       {
-        "period": "Depuis juin 2025",
-        "role": "Développeur Web3 Junior",
+        "period": "Depuis mai 2025",
+        "role": "Développeur Full Stack & Intégrateur de Smart Contracts",
+        "company": "Globe & Citizen",
+        "place": "Canada",
+        "points": [
+          "Intégration de smart contracts.",
+          "Ajout de fonctionnalités back-end et front-end.",
+          "Création de tests."
+        ]
+      },
+      {
+        "period": "Depuis mars 2025",
+        "role": "Développeur Web",
         "company": "W3 Frame",
         "place": "Lomé, Avédji — Togo",
         "points": [
-          "Conception d'applications décentralisées et d'intégrations Web3."
+          "Création de sites WordPress.",
+          "Formation au développement web."
         ]
       },
       {
@@ -208,14 +241,8 @@
       {
         "period": "Nov. 2021 – Juil. 2024",
         "title": "Licence en Sciences de l'Ingénieur — Informatique",
-        "detail": "Spécialité Développement d'applications · Mention Bien (Bac +3)",
+        "detail": "Spécialité Développement d'applications · Mention Assez bien",
         "school": "UCAO / UUT — Lomé, Togo"
-      },
-      {
-        "period": "Nov. 2019 – Nov. 2020",
-        "title": "Baccalauréat scientifique (Série D)",
-        "detail": "Deuxième partie",
-        "school": "Lycée Moderne d'Adidogomé — Lomé, Togo"
       }
     ]
   },
@@ -231,15 +258,24 @@
   "contact": {
     "label": "Contact",
     "heading": "Restons en contact.",
-    "subtitle": "Ouvert aux opportunités, collaborations et échanges autour du développement web et Web3.",
+    "subtitle": "Disponible pour des opportunités freelance, CDI et collaborations. Je réponds généralement sous 24 à 48 heures.",
     "emailLabel": "E-mail",
     "phoneLabel": "Téléphone",
-    "githubLabel": "GitHub"
+    "githubLabel": "GitHub",
+    "linkedinLabel": "LinkedIn"
   },
   "footer": {
     "role": "Développeur Full Stack"
   },
   "switcher": {
     "label": "Changer de langue"
+  },
+  "navigation": {
+    "label": "Navigation du portfolio",
+    "menu": "Menu",
+    "home": "Accueil",
+    "work": "Réalisations",
+    "experience": "Expérience",
+    "contact": "Contact"
   }
 }
