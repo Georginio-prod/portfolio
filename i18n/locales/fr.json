@@ -185,6 +185,11 @@
     "viewCode": "Voir le code",
     "background": "Contexte & contribution",
     "previews": "Aperçus",
+    "caseStudy": "Étude de cas",
+    "projectIndex": "Projet {current} sur {total}",
+    "projectNavigation": "Navigation entre les projets",
+    "statusLabel": "Statut",
+    "stackLabel": "Stack technique",
     "backToProjects": "Tous les projets",
     "ctaHeading": "Envie de travailler ensemble ?",
     "ctaButton": "Me contacter"
