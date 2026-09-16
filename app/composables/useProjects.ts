@@ -40,7 +40,10 @@ const projectMeta: Record<string, ProjectMeta> = {
     stack: ['Vue.js', 'TypeScript', 'Solidity', 'Web3', 'Tailwind CSS', 'Node.js', 'Git'],
     gallery: [
       '/projects/cnc/preview-desktop.png',
-      '/projects/cnc/preview-mobile.png'
+      '/projects/cnc/preview-mobile.png',
+      '/projects/cnc/preview-treasury.png',
+      '/projects/cnc/preview-payroll.png',
+      '/projects/cnc/preview-contract-management.png'
     ]
   },
   nova: {
@@ -52,7 +55,8 @@ const projectMeta: Record<string, ProjectMeta> = {
     stack: ['Nuxt.js', 'Vue.js', 'TypeScript', 'Tailwind CSS', 'SEO'],
     gallery: [
       '/projects/nova/preview-desktop.png',
-      '/projects/nova/preview-mobile.png'
+      '/projects/nova/preview-mobile.png',
+      '/projects/nova/preview-portfolio.png'
     ]
   },
   designer: {
@@ -76,7 +80,8 @@ const projectMeta: Record<string, ProjectMeta> = {
     stack: ['Nuxt.js', 'Vue.js', 'TypeScript', 'Tailwind CSS', 'Node.js'],
     gallery: [
       '/projects/orga/preview-desktop.png',
-      '/projects/orga/preview-mobile.png'
+      '/projects/orga/preview-mobile.png',
+      '/projects/orga/preview-value-proposition.png'
     ]
   },
   pulse: {
@@ -101,7 +106,8 @@ const projectMeta: Record<string, ProjectMeta> = {
     online: true,
     wip: true,
     cover: '/projects/worktogo.png',
-    stack: ['Nuxt.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Mobile Money', 'Escrow']
+    stack: ['Nuxt.js', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Mobile Money', 'Escrow'],
+    gallery: ['/projects/worktogo-preview-login.png']
   },
   microread: {
     url: 'https://micro-read-app.vercel.app/',
@@ -113,7 +119,8 @@ const projectMeta: Record<string, ProjectMeta> = {
     stack: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'WhatsApp API', 'Project Gutenberg'],
     gallery: [
       '/projects/microread/preview-desktop.png',
-      '/projects/microread/preview-mobile.png'
+      '/projects/microread/preview-mobile.png',
+      '/projects/microread/preview-reader.png'
     ]
   },
   meet: {
