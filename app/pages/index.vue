@@ -42,6 +42,11 @@ const visibleProjects = computed(() => {
 })
 const currentProject = computed(() => visibleProjects.value[activeProject.value])
 const projectCount = computed(() => String(projects.value.length).padStart(2, '0'))
+const heroPointer = ref({ x: 0, y: 0 })
+const heroStyle = computed(() => ({
+  '--hero-x': `${heroPointer.value.x}px`,
+  '--hero-y': `${heroPointer.value.y}px`
+}))
 
 const contactLinks = computed(() => [
   { key: 'email', label: t('contact.emailLabel'), value: 'etonameklou19@gmail.com', href: 'mailto:etonameklou19@gmail.com', icon: 'i-lucide-mail' },
@@ -58,11 +63,26 @@ function goToProject(step: number) {
   const count = visibleProjects.value.length
   activeProject.value = (activeProject.value + step + count) % count
 }
+
+function moveHero(event: PointerEvent) {
+  if (event.pointerType === 'touch') return
+
+  const target = event.currentTarget as HTMLElement
+  const bounds = target.getBoundingClientRect()
+  const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 18
+  const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 18
+
+  heroPointer.value = { x: Math.round(x), y: Math.round(y) }
+}
+
+function resetHero() {
+  heroPointer.value = { x: 0, y: 0 }
+}
 </script>
 
 <template>
   <div class="portfolio-shell overflow-hidden">
-    <section id="home" class="signal-hero relative isolate">
+    <section id="home" class="signal-hero relative isolate" :style="heroStyle" @pointermove="moveHero" @pointerleave="resetHero">
       <div class="signal-grain" aria-hidden="true" />
       <div class="signal-orbit signal-orbit-one" aria-hidden="true" />
       <div class="signal-orbit signal-orbit-two" aria-hidden="true" />
@@ -70,7 +90,7 @@ function goToProject(step: number) {
       <UContainer class="relative z-10">
         <div class="hero-topline hero-enter">
           <p class="signal-eyebrow"><span class="status-light" aria-hidden="true" />{{ t('portfolio.availability') }}</p>
-          <p class="signal-eyebrow hidden sm:block">Lomé, Togo · 06.13 N / 01.22 E</p>
+          <p class="signal-eyebrow hidden sm:block">{{ t('portfolio.heroContext') }}</p>
         </div>
 
         <div class="hero-composition">
@@ -170,7 +190,9 @@ function goToProject(step: number) {
         </RevealOnScroll>
 
         <RevealOnScroll :delay="130">
-          <ProjectCard v-if="currentProject" :key="`${activeFilter}-${currentProject.id}`" :project="currentProject" :index="activeProject" :total="visibleProjects.length" />
+          <Transition name="project-change" mode="out-in">
+            <ProjectCard v-if="currentProject" :key="`${activeFilter}-${currentProject.id}`" :project="currentProject" :index="activeProject" :total="visibleProjects.length" />
+          </Transition>
           <div class="project-selector" role="tablist" :aria-label="t('portfolio.projectSelector')">
             <button v-for="(project, index) in visibleProjects" :key="project.id" type="button" role="tab" :aria-selected="index === activeProject" :class="{ 'is-active': index === activeProject }" @click="activeProject = index">
               <span>{{ String(index + 1).padStart(2, '0') }}</span>{{ project.title }}
