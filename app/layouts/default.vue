@@ -1,14 +1,20 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const route = useRoute()
+
+// Project pages are long-form case studies. Their own back link and project
+// pagination provide the useful navigation, so the global fixed controls are
+// deliberately removed while the visitor reads.
+const isProjectDetail = computed(() => route.path.startsWith('/projects/'))
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col portfolio-layout">
+  <div class="min-h-screen flex flex-col portfolio-layout" :class="{ 'portfolio-reading': isProjectDetail }">
     <a class="skip-link" href="#main-content">{{ t('navigation.skip') }}</a>
-    <PortfolioNav />
+    <PortfolioNav v-if="!isProjectDetail" />
 
-    <!-- Language switch + theme toggle (fixed, top-right) -->
-    <div class="portfolio-tools">
+    <!-- The long-form project view has its own in-flow navigation. -->
+    <div v-if="!isProjectDetail" class="portfolio-tools">
       <LanguageSwitcher />
       <div class="portfolio-mode-toggle">
         <ColorModeToggle />

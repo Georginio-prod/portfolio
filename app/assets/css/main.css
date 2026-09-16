@@ -321,6 +321,7 @@ section[id] { scroll-margin-top: 5.5rem; }
 @keyframes ticker { to { transform: translateX(-50%); } } @keyframes spin { to { transform: rotate(360deg); } }
 
 .case-study { background: var(--portfolio-ink); overflow: hidden; }
+.portfolio-reading .case-study-intro { padding-top: clamp(3.25rem, 6vw, 5.5rem); }
 .case-study-intro { padding: 9.5rem 0 clamp(3rem, 6vw, 5.5rem); }
 .case-study-back { align-items: center; color: var(--portfolio-muted); display: inline-flex; font-family: var(--portfolio-mono); font-size: .67rem; gap: .65rem; letter-spacing: .09em; text-decoration: none; text-transform: uppercase; transition: color 180ms ease, transform 180ms ease; }
 .case-study-back:hover { color: var(--portfolio-paper); transform: translateX(-.3rem); }
