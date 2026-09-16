@@ -1,29 +1,34 @@
 <script setup lang="ts">
 const { t } = useI18n()
+const route = useRoute()
+
+// Project pages are long-form case studies. Their own back link and project
+// pagination provide the useful navigation, so the global fixed controls are
+// deliberately removed while the visitor reads.
+const isProjectDetail = computed(() => route.path.startsWith('/projects/'))
 </script>
 
 <template>
-  <div class="min-h-screen flex flex-col bg-default text-default">
-    <PortfolioNav />
+  <div class="min-h-screen flex flex-col portfolio-layout" :class="{ 'portfolio-reading': isProjectDetail }">
+    <a class="skip-link" href="#main-content">{{ t('navigation.skip') }}</a>
+    <PortfolioNav v-if="!isProjectDetail" />
 
-    <!-- Language switch + theme toggle (fixed, top-right) -->
-    <div class="fixed top-3 right-3 sm:top-4 sm:right-4 z-50 flex items-center gap-2">
+    <!-- The long-form project view has its own in-flow navigation. -->
+    <div v-if="!isProjectDetail" class="portfolio-tools">
       <LanguageSwitcher />
-      <div class="rounded-full border border-default bg-elevated/90 p-1 shadow-lg backdrop-blur-md">
+      <div class="portfolio-mode-toggle">
         <ColorModeToggle />
       </div>
     </div>
 
-    <main class="flex-1">
+    <main id="main-content" class="flex-1">
       <slot />
     </main>
 
-    <footer class="border-t border-default py-10">
-      <UContainer
-        class="flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-muted"
-      >
+    <footer class="portfolio-footer">
+      <UContainer class="portfolio-footer-content">
         <p>© {{ new Date().getFullYear() }} Komla Etonam Georges EKLOU — {{ t('footer.role') }}.</p>
-        <div class="flex items-center gap-4">
+        <div>
           <a
             href="https://github.com/Georginio-prod"
             target="_blank"

@@ -19,6 +19,17 @@
     "location": "Lomé, Togo",
     "openToWork": "Disponible pour des opportunités"
   },
+  "portfolio": {
+    "availability": "Ouvert aux opportunités ambitieuses",
+    "heroContext": "Lomé · disponible à distance",
+    "heroStatement": "Je rends les systèmes techniques clairs, fiables et prêts à être utilisés par de vraies personnes.",
+    "scroll": "Explorer les réalisations",
+    "projectsCount": "projets dans l'archive",
+    "projectsHeading": "Des projets avec un point de vue.",
+    "projectSelector": "Choisir un projet",
+    "trajectoryHeading": "Le parcours fait partie de la pratique.",
+    "contactLead": "Un produit qui mérite d'être construit ?"
+  },
   "focusAreas": [
     {
       "title": "Produits web",
@@ -174,6 +185,11 @@
     "viewCode": "Voir le code",
     "background": "Contexte & contribution",
     "previews": "Aperçus",
+    "caseStudy": "Étude de cas",
+    "projectIndex": "Projet {current} sur {total}",
+    "projectNavigation": "Navigation entre les projets",
+    "statusLabel": "Statut",
+    "stackLabel": "Stack technique",
     "backToProjects": "Tous les projets",
     "ctaHeading": "Envie de travailler ensemble ?",
     "ctaButton": "Me contacter"
@@ -265,13 +281,14 @@
     "linkedinLabel": "LinkedIn"
   },
   "footer": {
-    "role": "Développeur Full Stack"
+    "role": "Développeur Web Full Stack & Web3"
   },
   "switcher": {
     "label": "Changer de langue"
   },
   "navigation": {
     "label": "Navigation du portfolio",
+    "skip": "Aller au contenu",
     "menu": "Menu",
     "home": "Accueil",
     "work": "Réalisations",
