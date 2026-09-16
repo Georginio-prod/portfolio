@@ -1,50 +1,30 @@
 <script setup lang="ts">
-// t() renders flat strings and <i18n-t> the rich paragraphs. Structured content
-// (arrays of objects) is read with tm() and resolved to plain strings with rt()
-// inside computeds, so templates iterate clean data. Single source: the locale
-// JSON files.
 const { t, tm, rt } = useI18n()
-
-// Language-agnostic tech list (proper names stay the same in every locale).
-const heroSkills = [
-  'HTML / CSS',
-  'JavaScript',
-  'TypeScript',
-  'Vue.js',
-  'Nuxt.js',
-  'React',
-  'Tailwind CSS',
-  'Node.js',
-  'Express',
-  'Blockchain',
-  'Solidity',
-  'Hardhat',
-  'Web3',
-  'Git / GitHub',
-  'Docker'
-]
-
-// Project data (links, icons, tags, stack + the translated prose) lives in the
-// `useProjects` composable, shared with the /projects/:id detail pages.
 const { projects } = useProjects()
 
-const focusAreas = computed(() =>
-  (tm('focusAreas') as any[]).map(a => ({ title: rt(a.title), description: rt(a.description) }))
-)
-
-const softSkills = computed(() =>
-  (tm('about.softSkills') as any[]).map(s => rt(s))
-)
+const heroSkills = [
+  'Vue.js', 'Nuxt.js', 'React', 'TypeScript', 'Node.js',
+  'Solidity', 'Web3', 'Tailwind CSS', 'Docker'
+]
 
 const skillGroups = computed(() =>
-  (tm('skillGroups') as any[]).map(group => ({
-    title: rt(group.title),
-    items: (group.items as any[]).map(item => rt(item))
+  (tm('skillGroups') as any[]).map(group => ({ title: rt(group.title), items: (group.items as any[]).map(item => rt(item)) }))
+)
+const softSkills = computed(() => (tm('about.softSkills') as any[]).map(skill => rt(skill)))
+const experiences = computed(() =>
+  (tm('experience.items') as any[]).map(item => ({
+    period: rt(item.period), role: rt(item.role), company: rt(item.company), place: rt(item.place),
+    points: (item.points as any[]).map(point => rt(point))
   }))
 )
+const education = computed(() =>
+  (tm('education.items') as any[]).map(item => ({
+    period: rt(item.period), title: rt(item.title), detail: rt(item.detail), school: rt(item.school)
+  }))
+)
+const interests = computed(() => (tm('interests.items') as any[]).map(item => rt(item)))
 
 type ProjectFilter = 'featured' | 'all' | 'learning'
-
 const featuredProjectIds = ['cnc', 'nova', 'designer', 'orga']
 const learningProjectIds = ['meet', 'pomodoro', 'audiophile', 'fem']
 const activeFilter = ref<ProjectFilter>('featured')
@@ -55,500 +35,188 @@ const projectFilters = computed(() => [
   { id: 'all' as const, label: t('projects.filters.all') },
   { id: 'learning' as const, label: t('projects.filters.learning') }
 ])
-
 const visibleProjects = computed(() => {
-  if (activeFilter.value === 'featured') {
-    return projects.value.filter(project => featuredProjectIds.includes(project.id))
-  }
-
-  if (activeFilter.value === 'learning') {
-    return projects.value.filter(project => learningProjectIds.includes(project.id))
-  }
-
+  if (activeFilter.value === 'featured') return projects.value.filter(project => featuredProjectIds.includes(project.id))
+  if (activeFilter.value === 'learning') return projects.value.filter(project => learningProjectIds.includes(project.id))
   return projects.value
 })
-
 const currentProject = computed(() => visibleProjects.value[activeProject.value])
+const projectCount = computed(() => String(projects.value.length).padStart(2, '0'))
+
+const contactLinks = computed(() => [
+  { key: 'email', label: t('contact.emailLabel'), value: 'etonameklou19@gmail.com', href: 'mailto:etonameklou19@gmail.com', icon: 'i-lucide-mail' },
+  { key: 'phone', label: t('contact.phoneLabel'), value: '+228 98 93 85 55', href: 'tel:+22898938555', icon: 'i-lucide-phone' },
+  { key: 'github', label: t('contact.githubLabel'), value: 'Georginio-prod', href: 'https://github.com/Georginio-prod', icon: 'i-simple-icons-github' },
+  { key: 'linkedin', label: t('contact.linkedinLabel'), value: 'LinkedIn', href: 'https://www.linkedin.com/in/komla-etonam-georges-eklou-68518b23b/', icon: 'i-simple-icons-linkedin' }
+])
 
 function setProjectFilter(filter: ProjectFilter) {
   activeFilter.value = filter
   activeProject.value = 0
 }
-
 function goToProject(step: number) {
   const count = visibleProjects.value.length
   activeProject.value = (activeProject.value + step + count) % count
 }
-
-const experiences = computed(() =>
-  (tm('experience.items') as any[]).map(e => ({
-    period: rt(e.period),
-    role: rt(e.role),
-    company: rt(e.company),
-    place: rt(e.place),
-    points: (e.points as any[]).map(p => rt(p))
-  }))
-)
-
-const education = computed(() =>
-  (tm('education.items') as any[]).map(e => ({
-    period: rt(e.period),
-    title: rt(e.title),
-    detail: rt(e.detail),
-    school: rt(e.school)
-  }))
-)
-
-const interests = computed(() =>
-  (tm('interests.items') as any[]).map(i => rt(i))
-)
-
-const contactLinks = computed(() => [
-  {
-    key: 'email',
-    label: t('contact.emailLabel'),
-    value: 'etonameklou19@gmail.com',
-    href: 'mailto:etonameklou19@gmail.com',
-    icon: 'i-lucide-mail',
-    wide: true
-  },
-  {
-    key: 'phone',
-    label: t('contact.phoneLabel'),
-    value: '+228 98 93 85 55',
-    href: 'tel:+22898938555',
-    icon: 'i-lucide-phone',
-    wide: false
-  },
-  {
-    key: 'github',
-    label: t('contact.githubLabel'),
-    value: 'Georginio-prod',
-    href: 'https://github.com/Georginio-prod',
-    icon: 'i-simple-icons-github',
-    wide: false
-  },
-  {
-    key: 'linkedin',
-    label: t('contact.linkedinLabel'),
-    value: 'Komla Etonam Georges EKLOU',
-    href: 'https://www.linkedin.com/in/komla-etonam-georges-eklou-68518b23b/',
-    icon: 'i-simple-icons-linkedin',
-    wide: false
-  }
-])
 </script>
 
 <template>
-  <div>
-    <!-- Hero -->
-    <section id="home" class="hero-section relative min-h-[92vh] overflow-hidden pt-28 pb-16 md:pt-32 md:pb-24">
-      <!-- Geometric background -->
-      <svg
-        class="hero-grid pointer-events-none absolute inset-0 h-full w-full"
-        preserveAspectRatio="xMidYMid slice"
-        viewBox="0 0 1200 800"
-        xmlns="http://www.w3.org/2000/svg"
-        aria-hidden="true"
-      >
-        <defs>
-          <pattern id="hero-grid" width="80" height="80" patternUnits="userSpaceOnUse">
-            <path d="M 80 0 L 0 0 0 80" fill="none" stroke="rgba(120,120,140,0.06)" stroke-width="1" />
-          </pattern>
-        </defs>
-        <rect width="1200" height="800" fill="url(#hero-grid)" />
-        <line x1="0" y1="0" x2="1200" y2="800" stroke="rgba(120,120,140,0.04)" stroke-width="2" />
-        <line x1="1200" y1="0" x2="0" y2="800" stroke="rgba(120,120,140,0.04)" stroke-width="2" />
-        <g class="animate-float-slow">
-          <polygon points="150,100 300,50 350,200 200,250" fill="none" stroke="rgba(96,165,250,0.14)" stroke-width="1" />
-        </g>
-        <g class="animate-float-slow-reverse">
-          <polygon points="900,600 1050,550 1100,700 950,750" fill="none" stroke="rgba(161,161,170,0.10)" stroke-width="1" />
-        </g>
-        <g class="hero-spin-slow" style="transform-origin: 1100px 150px">
-          <circle cx="1100" cy="150" r="100" fill="none" stroke="rgba(120,120,140,0.08)" stroke-width="1" />
-        </g>
-      </svg>
-
-      <div
-        class="pointer-events-none absolute -left-40 top-10 size-96 rounded-full bg-primary/10 blur-3xl"
-      />
-      <div
-        class="pointer-events-none absolute -right-32 bottom-20 size-80 rounded-full bg-secondary/10 blur-3xl"
-      />
+  <div class="portfolio-shell overflow-hidden">
+    <section id="home" class="signal-hero relative isolate">
+      <div class="signal-grain" aria-hidden="true" />
+      <div class="signal-orbit signal-orbit-one" aria-hidden="true" />
+      <div class="signal-orbit signal-orbit-two" aria-hidden="true" />
 
       <UContainer class="relative z-10">
-        <header class="hero-animate mb-12 border-b border-default pb-8 md:mb-16">
-          <div class="mb-3 flex items-center gap-3">
-            <span class="hero-gradient-text text-5xl font-bold md:text-6xl">{{ t('hero.greeting') }}</span>
-            <span class="hero-animate hero-animate-delay-1 text-5xl md:text-6xl">👋</span>
-          </div>
-          <h1 class="hero-animate hero-animate-delay-1 text-3xl font-bold tracking-tight text-highlighted break-words sm:text-5xl lg:text-6xl">
-            {{ t('hero.namePrefix') }} {{ t('hero.name') }}
-          </h1>
-          <p class="hero-animate hero-animate-delay-2 mt-3 text-xl font-light text-primary md:text-2xl">
-            {{ t('hero.role') }}
-          </p>
-        </header>
+        <div class="hero-topline hero-enter">
+          <p class="signal-eyebrow"><span class="status-light" aria-hidden="true" />{{ t('portfolio.availability') }}</p>
+          <p class="signal-eyebrow hidden sm:block">Lomé, Togo · 06.13 N / 01.22 E</p>
+        </div>
 
-        <div class="grid items-start gap-12 lg:grid-cols-[1fr_auto] lg:gap-16">
-          <div class="space-y-10">
-            <i18n-t
-              keypath="hero.bio"
-              tag="p"
-              scope="global"
-              class="hero-animate hero-animate-delay-2 max-w-2xl text-lg leading-relaxed text-muted"
-            >
-              <template #university>
-                <span class="font-semibold text-highlighted">{{ t('hero.bioUniversity') }}</span>
-              </template>
-              <template #focus>
-                <span class="italic text-primary">{{ t('hero.bioFocus') }}</span>
-              </template>
-            </i18n-t>
-
-            <div class="hero-animate hero-animate-delay-3">
-              <h3 class="mb-3 text-sm font-semibold uppercase tracking-widest text-dimmed">
-                {{ t('hero.skillsTitle') }}
-              </h3>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  v-for="skill in heroSkills"
-                  :key="skill"
-                  class="hero-skill-tag rounded-full border border-primary/40 bg-primary/10 px-3 py-1 text-sm text-primary transition-colors hover:bg-primary/20"
-                >
-                  {{ skill }}
-                </span>
-              </div>
-            </div>
-
-            <div class="hero-animate hero-animate-delay-4">
-              <h3 class="mb-4 text-sm font-semibold uppercase tracking-widest text-dimmed">
-                {{ t('hero.focusTitle') }}
-              </h3>
-              <div class="grid gap-4 sm:grid-cols-3">
-                <div
-                  v-for="area in focusAreas"
-                  :key="area.title"
-                  class="hero-focus-card rounded-xl border border-default bg-elevated p-4 transition-colors hover:border-primary/40 hover:bg-accented"
-                >
-                  <h4 class="font-medium text-highlighted">{{ area.title }}</h4>
-                  <p class="mt-1 text-sm text-muted">{{ area.description }}</p>
-                </div>
-              </div>
-            </div>
-
-            <p class="hero-animate hero-animate-delay-4 text-muted italic">
-              {{ t('hero.tagline') }}
-            </p>
-
-            <div class="hero-animate hero-animate-delay-4 flex flex-wrap gap-3 pt-2">
-              <UButton
-                to="#projects"
-                :locale="false"
-                size="lg"
-                class="rounded-full px-6 font-semibold"
-                trailing-icon="i-lucide-arrow-right"
-              >
-                {{ t('hero.ctaProjects') }}
-              </UButton>
-              <UButton
-                to="#contact"
-                :locale="false"
-                size="lg"
-                color="neutral"
-                variant="outline"
-                class="rounded-full px-6 font-semibold"
-                icon="i-lucide-mail"
-              >
-                {{ t('hero.ctaContact') }}
-              </UButton>
+        <div class="hero-composition">
+          <div class="hero-copy">
+            <p class="hero-role hero-enter hero-enter-delay-1">{{ t('hero.role') }}</p>
+            <h1 class="hero-name hero-enter hero-enter-delay-2" :aria-label="t('hero.name')">
+              <span class="hero-name-prefix">{{ t('hero.namePrefix') }}</span>
+              <span>Komla</span>
+              <span class="hero-name-last">Eklou</span>
+            </h1>
+            <p class="hero-intro hero-enter hero-enter-delay-3">{{ t('portfolio.heroStatement') }}</p>
+            <div class="hero-actions hero-enter hero-enter-delay-4">
+              <a href="#projects" class="signal-button signal-button-primary">
+                {{ t('hero.ctaProjects') }} <UIcon name="i-lucide-arrow-down-right" class="size-4" />
+              </a>
               <CvDownloadMenu />
             </div>
           </div>
 
-          <!-- Profile visual -->
-          <div class="hero-animate hero-animate-delay-3 order-first flex flex-col items-center gap-6 lg:order-none">
-            <div class="relative">
-              <div class="hero-avatar-ring absolute -inset-3 rounded-full border border-primary/20" />
-              <div class="hero-avatar-ring absolute -inset-6 rounded-full border border-default" />
-              <div
-                class="relative size-56 overflow-hidden rounded-full bg-gradient-to-br from-primary/20 via-[var(--ui-bg-elevated)] to-secondary/10 ring-1 ring-primary/30"
-              >
-                <img
-                  src="/profile.jpg"
-                  :alt="t('hero.name')"
-                  class="size-full scale-125 object-cover object-[center_42%]"
-                >
-              </div>
+          <div class="hero-portrait hero-enter hero-enter-delay-3">
+            <div class="portrait-sun" aria-hidden="true" />
+            <div class="portrait-frame">
+              <img src="/profile.jpg" :alt="t('hero.name')" class="portrait-image">
             </div>
-            <div class="w-52 space-y-2 rounded-2xl border border-default bg-elevated p-4 text-center backdrop-blur-sm">
-              <p class="text-xs uppercase tracking-widest text-dimmed">{{ t('hero.basedIn') }}</p>
-              <p class="font-medium text-highlighted">{{ t('hero.location') }}</p>
-              <div class="flex items-center justify-center gap-1.5 pt-1">
-                <span class="relative flex size-2">
-                  <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
-                  <span class="relative inline-flex size-2 rounded-full bg-emerald-400" />
-                </span>
-                <span class="text-xs text-emerald-500 dark:text-emerald-400">{{ t('hero.openToWork') }}</span>
-              </div>
-            </div>
+            <div class="portrait-caption"><span class="portrait-caption-index">01</span><span>{{ t('hero.openToWork') }}</span></div>
+            <div class="portrait-stamp" aria-hidden="true"><span>WEB · WEB3 · PRODUCT</span></div>
           </div>
         </div>
+
+        <div class="hero-footer hero-enter hero-enter-delay-4">
+          <p class="hero-location"><span>{{ t('hero.basedIn') }}</span><strong>{{ t('hero.location') }}</strong></p>
+          <a href="#about" class="hero-scroll-link"><span>{{ t('portfolio.scroll') }}</span><span class="hero-scroll-line" aria-hidden="true" /></a>
+          <p class="hero-count"><span>{{ projectCount }}</span> {{ t('portfolio.projectsCount') }}</p>
+        </div>
       </UContainer>
+
+      <div class="skill-ticker" aria-label="Technical skills">
+        <div class="skill-ticker-track">
+          <template v-for="loop in 2" :key="loop">
+            <span v-for="skill in heroSkills" :key="`${loop}-${skill}`" class="skill-ticker-item">{{ skill }} <i aria-hidden="true">✦</i></span>
+          </template>
+        </div>
+      </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="py-20 md:py-28 border-t border-default">
+    <section id="about" class="portfolio-section about-section">
       <UContainer>
         <RevealOnScroll>
-          <div class="grid md:grid-cols-2 gap-12 items-start">
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
-                {{ t('about.label') }}
-              </p>
-              <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-highlighted">
-                {{ t('about.heading') }}
-              </h2>
-              <i18n-t keypath="about.p1" tag="p" scope="global" class="mt-5 text-muted leading-relaxed">
-                <template #degree>
-                  <span class="text-highlighted font-medium">{{ t('about.p1Degree') }}</span>
-                </template>
-              </i18n-t>
-              <i18n-t keypath="about.p2" tag="p" scope="global" class="mt-4 text-muted leading-relaxed">
-                <template #devops>
-                  <span class="text-highlighted font-medium">{{ t('about.p2Devops') }}</span>
-                </template>
-              </i18n-t>
+          <div class="section-kicker"><span>01</span><p>{{ t('about.label') }}</p></div>
+          <div class="about-lead">
+            <h2>{{ t('about.heading') }}</h2>
+            <div class="about-prose">
+              <i18n-t keypath="about.p1" tag="p" scope="global"><template #degree><strong>{{ t('about.p1Degree') }}</strong></template></i18n-t>
+              <i18n-t keypath="about.p2" tag="p" scope="global"><template #devops><strong>{{ t('about.p2Devops') }}</strong></template></i18n-t>
             </div>
+          </div>
+        </RevealOnScroll>
 
-            <div class="space-y-4">
-              <div class="rounded-2xl bg-elevated ring-1 ring-default p-6 space-y-3 text-sm text-muted transition-all duration-500 hover:ring-primary/40">
-                <p class="flex items-center gap-3">
-                  <UIcon name="i-lucide-map-pin" class="size-5 text-primary shrink-0" /> {{ t('about.location') }}
-                </p>
-                <p class="flex items-center gap-3">
-                  <UIcon name="i-lucide-languages" class="size-5 text-primary shrink-0" /> {{ t('about.languages') }}
-                </p>
-                <p class="flex items-center gap-3">
-                  <UIcon name="i-lucide-mail" class="size-5 text-primary shrink-0" /> etonameklou19@gmail.com
-                </p>
-                <p class="flex items-center gap-3">
-                  <UIcon name="i-lucide-phone" class="size-5 text-primary shrink-0" /> {{ t('about.phone') }}
-                </p>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <div
-                  v-for="group in skillGroups"
-                  :key="group.title"
-                  class="rounded-xl bg-elevated px-3 py-2 ring-1 ring-default"
-                >
-                  <h3 class="text-xs font-semibold uppercase tracking-wider text-dimmed">{{ group.title }}</h3>
-                  <p class="mt-1 text-xs leading-relaxed text-muted">{{ group.items.join(' · ') }}</p>
-                </div>
-              </div>
-              <div class="flex flex-wrap gap-2">
-                <span
-                  v-for="skill in softSkills"
-                  :key="skill"
-                  class="rounded-full bg-elevated ring-1 ring-default px-3 py-1 text-xs text-muted transition-all duration-300 hover:ring-primary/40 hover:text-highlighted"
-                >
-                  {{ skill }}
-                </span>
-              </div>
-            </div>
+        <div class="capability-grid">
+          <RevealOnScroll v-for="(group, index) in skillGroups" :key="group.title" :delay="index * 90">
+            <article class="capability-card">
+              <p class="capability-number">0{{ index + 1 }}</p><h3>{{ group.title }}</h3>
+              <ul><li v-for="item in group.items" :key="item">{{ item }}</li></ul>
+            </article>
+          </RevealOnScroll>
+        </div>
+
+        <RevealOnScroll :delay="120">
+          <div class="about-meta-row">
+            <div class="about-meta"><UIcon name="i-lucide-map-pin" class="size-4" /><span>{{ t('about.location') }}</span></div>
+            <div class="about-meta"><UIcon name="i-lucide-languages" class="size-4" /><span>{{ t('about.languages') }}</span></div>
+            <div class="soft-skills"><span v-for="skill in softSkills" :key="skill">{{ skill }}</span></div>
           </div>
         </RevealOnScroll>
       </UContainer>
     </section>
 
-    <!-- Projects -->
-    <section id="projects" class="py-20 md:py-28 border-t border-default">
+    <section id="projects" class="portfolio-section projects-section">
       <UContainer>
         <RevealOnScroll>
-          <div class="flex flex-col gap-6 mb-10 sm:gap-8 sm:mb-12 lg:flex-row lg:items-end lg:justify-between lg:gap-10 lg:mb-14">
-            <div class="max-w-[720px]">
-              <span class="inline-flex items-center font-mono text-[11px] font-medium tracking-[0.18em] uppercase text-dimmed">
-                <span class="inline-block size-1.5 rounded-full bg-secondary mr-2 shadow-[0_0_12px_var(--ui-secondary)]" />
-                {{ t('projects.label') }}
-              </span>
-              <h2 class="mt-4 sm:mt-[18px] text-[clamp(32px,7vw,72px)] font-bold leading-[0.95] tracking-[-0.025em] text-balance text-highlighted">
-                {{ t('projects.heading') }}
-              </h2>
-              <p class="mt-4 text-[15px] text-muted leading-[1.55]">{{ t('projects.subtitle') }}</p>
-              <div class="mt-5 flex flex-wrap gap-2" :aria-label="t('projects.filterLabel')">
-                <button
-                  v-for="filter in projectFilters"
-                  :key="filter.id"
-                  type="button"
-                  class="rounded-full border px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
-                  :class="activeFilter === filter.id ? 'border-primary bg-primary/10 text-primary' : 'border-default text-muted hover:bg-elevated hover:text-highlighted'"
-                  :aria-pressed="activeFilter === filter.id"
-                  @click="setProjectFilter(filter.id)"
-                >
-                  {{ filter.label }}
-                </button>
-              </div>
-            </div>
-
-            <div class="flex shrink-0 items-center gap-2">
-              <button
-                type="button"
-                class="inline-flex items-center justify-center rounded-full border border-accented p-3 text-highlighted transition-colors duration-200 hover:bg-elevated"
-                :aria-label="t('projects.prev')"
-                @click="goToProject(-1)"
-              >
-                <UIcon name="i-lucide-chevron-left" class="size-[18px]" />
-              </button>
-              <button
-                type="button"
-                class="inline-flex items-center justify-center rounded-full border border-accented p-3 text-highlighted transition-colors duration-200 hover:bg-elevated"
-                :aria-label="t('projects.next')"
-                @click="goToProject(1)"
-              >
-                <UIcon name="i-lucide-chevron-right" class="size-[18px]" />
-              </button>
-            </div>
+          <div class="projects-heading">
+            <div><div class="section-kicker"><span>02</span><p>{{ t('projects.label') }}</p></div><h2>{{ t('portfolio.projectsHeading') }}</h2></div>
+            <p>{{ t('projects.subtitle') }}</p>
           </div>
         </RevealOnScroll>
 
         <RevealOnScroll :delay="80">
-          <ProjectCard
-            v-if="currentProject"
-            :key="currentProject.id"
-            :project="currentProject"
-            :index="activeProject"
-              :total="visibleProjects.length"
-          />
+          <div class="project-controls">
+            <div class="project-filters" :aria-label="t('projects.filterLabel')">
+              <button v-for="filter in projectFilters" :key="filter.id" type="button" :class="{ 'is-active': activeFilter === filter.id }" :aria-pressed="activeFilter === filter.id" @click="setProjectFilter(filter.id)">{{ filter.label }}</button>
+            </div>
+            <div class="project-arrows">
+              <button type="button" :aria-label="t('projects.prev')" @click="goToProject(-1)"><UIcon name="i-lucide-arrow-left" class="size-4" /></button>
+              <button type="button" :aria-label="t('projects.next')" @click="goToProject(1)"><UIcon name="i-lucide-arrow-right" class="size-4" /></button>
+            </div>
+          </div>
+        </RevealOnScroll>
 
-          <!-- Direct access to any project, mirroring the arrow navigation -->
-          <div class="mt-6 flex flex-wrap items-center gap-2">
-            <button
-              v-for="(project, i) in visibleProjects"
-              :key="project.id"
-              type="button"
-              class="h-2 rounded-full transition-all duration-200"
-              :class="i === activeProject ? 'w-8 bg-secondary' : 'w-2 bg-accented hover:bg-inverted/30'"
-              :aria-label="project.title"
-              :aria-current="i === activeProject"
-              @click="activeProject = i"
-            />
+        <RevealOnScroll :delay="130">
+          <ProjectCard v-if="currentProject" :key="`${activeFilter}-${currentProject.id}`" :project="currentProject" :index="activeProject" :total="visibleProjects.length" />
+          <div class="project-selector" role="tablist" :aria-label="t('portfolio.projectSelector')">
+            <button v-for="(project, index) in visibleProjects" :key="project.id" type="button" role="tab" :aria-selected="index === activeProject" :class="{ 'is-active': index === activeProject }" @click="activeProject = index">
+              <span>{{ String(index + 1).padStart(2, '0') }}</span>{{ project.title }}
+            </button>
           </div>
         </RevealOnScroll>
       </UContainer>
     </section>
 
-    <!-- Experience -->
-    <section id="experience" class="py-20 md:py-28 border-t border-default">
+    <section id="experience" class="portfolio-section trajectory-section">
       <UContainer>
-        <div class="grid lg:grid-cols-2 gap-12">
-          <RevealOnScroll>
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
-                {{ t('experience.label') }}
-              </p>
-              <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-8 text-highlighted">{{ t('experience.heading') }}</h2>
-              <ol class="relative border-l border-default space-y-8 pl-6">
-                <li v-for="exp in experiences" :key="exp.role + exp.period" class="relative group">
-                  <span class="timeline-dot absolute -left-[31px] top-1.5 size-3 rounded-full bg-primary ring-4 ring-[var(--ui-bg)] transition-transform duration-300 group-hover:scale-125" />
-                  <p class="text-xs uppercase tracking-widest text-dimmed">{{ exp.period }}</p>
-                  <h3 class="mt-1 font-semibold text-lg text-highlighted">{{ exp.role }}</h3>
-                  <p class="text-sm text-primary">{{ exp.company }} · {{ exp.place }}</p>
-                  <ul class="mt-2 space-y-1 text-sm text-muted list-disc list-inside">
-                    <li v-for="p in exp.points" :key="p">{{ p }}</li>
-                  </ul>
-                </li>
-              </ol>
-            </div>
-          </RevealOnScroll>
+        <RevealOnScroll><div class="trajectory-heading"><div class="section-kicker"><span>03</span><p>{{ t('experience.label') }}</p></div><h2>{{ t('portfolio.trajectoryHeading') }}</h2></div></RevealOnScroll>
+        <div class="trajectory-layout">
+          <div class="trajectory-list">
+            <RevealOnScroll v-for="(experience, index) in experiences" :key="experience.role + experience.period" :delay="index * 65">
+              <article class="trajectory-card">
+                <p class="trajectory-period">{{ experience.period }}</p>
+                <div><h3>{{ experience.role }}</h3><p class="trajectory-company">{{ experience.company }} <span>—</span> {{ experience.place }}</p><ul><li v-for="point in experience.points" :key="point">{{ point }}</li></ul></div>
+              </article>
+            </RevealOnScroll>
+          </div>
 
-          <RevealOnScroll :delay="120">
-            <div>
-              <p class="text-sm font-semibold uppercase tracking-widest text-secondary mb-3">
-                {{ t('education.label') }}
-              </p>
-              <h2 class="text-3xl md:text-4xl font-bold tracking-tight mb-8 text-highlighted">{{ t('education.heading') }}</h2>
-              <div class="space-y-4">
-                <div
-                  v-for="edu in education"
-                  :key="edu.title"
-                  class="rounded-2xl bg-elevated ring-1 ring-default p-6 transition-all duration-500 hover:ring-primary/40 hover:-translate-y-0.5"
-                >
-                  <p class="text-xs uppercase tracking-widest text-dimmed">{{ edu.period }}</p>
-                  <h3 class="mt-1 font-semibold text-lg text-highlighted">{{ edu.title }}</h3>
-                  <p class="mt-1 text-sm text-muted">{{ edu.detail }}</p>
-                  <p class="mt-2 text-sm text-primary">{{ edu.school }}</p>
-                </div>
+          <RevealOnScroll :delay="130">
+            <aside class="trajectory-aside">
+              <div class="trajectory-orbit" aria-hidden="true"><span>build</span><span>learn</span><span>share</span></div>
+              <div v-for="item in education" :key="item.title" class="education-card">
+                <p class="section-kicker"><span>+</span>{{ t('education.label') }}</p><p class="education-period">{{ item.period }}</p><h3>{{ item.title }}</h3><p>{{ item.detail }}</p><p class="education-school">{{ item.school }}</p>
               </div>
-
-              <div class="mt-6 rounded-2xl bg-elevated ring-1 ring-default p-6">
-                <h3 class="text-xs font-semibold uppercase tracking-widest text-dimmed mb-3">
-                  {{ t('interests.title') }}
-                </h3>
-                <div class="flex flex-wrap gap-2">
-                  <span
-                    v-for="i in interests"
-                    :key="i"
-                    class="rounded-full bg-accented ring-1 ring-default px-3 py-1 text-xs text-muted"
-                  >
-                    {{ i }}
-                  </span>
-                </div>
-              </div>
-            </div>
+              <div class="interest-list"><p>{{ t('interests.title') }}</p><span v-for="interest in interests" :key="interest">{{ interest }}</span></div>
+            </aside>
           </RevealOnScroll>
         </div>
       </UContainer>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-20 md:py-28 border-t border-default">
+    <section id="contact" class="contact-section">
       <UContainer>
         <RevealOnScroll>
-          <div class="grid md:grid-cols-5 gap-10 md:gap-16 items-start">
-            <div class="md:col-span-2">
-              <p class="text-sm font-semibold uppercase tracking-widest text-primary mb-3">
-                {{ t('contact.label') }}
-              </p>
-              <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-highlighted">
-                {{ t('contact.heading') }}
-              </h2>
-              <p class="mt-4 text-muted leading-relaxed">
-                {{ t('contact.subtitle') }}
-              </p>
-            </div>
-
-            <div class="md:col-span-3 grid gap-3 sm:grid-cols-2">
-              <a
-                v-for="link in contactLinks"
-                :key="link.key"
-                :href="link.href"
-                :target="link.href.startsWith('http') ? '_blank' : undefined"
-                :rel="link.href.startsWith('http') ? 'noopener noreferrer' : undefined"
-                class="group flex items-start gap-4 rounded-2xl bg-elevated ring-1 ring-default p-5 transition-all duration-500 hover:-translate-y-1 hover:ring-primary/40 hover:bg-accented"
-                :class="link.wide ? 'sm:col-span-2' : ''"
-              >
-                <div
-                  class="flex size-11 shrink-0 items-center justify-center rounded-xl bg-primary/10 text-primary ring-1 ring-primary/20 transition-transform duration-300 group-hover:scale-110"
-                >
-                  <UIcon :name="link.icon" class="size-5" />
-                </div>
-                <div class="min-w-0">
-                  <p class="text-xs font-semibold uppercase tracking-widest text-dimmed">
-                    {{ link.label }}
-                  </p>
-                  <p class="mt-1 text-sm font-medium text-highlighted truncate group-hover:text-primary transition-colors duration-300">
-                    {{ link.value }}
-                  </p>
-                </div>
-                <UIcon
-                  name="i-lucide-arrow-up-right"
-                  class="ml-auto size-4 shrink-0 text-dimmed transition-all duration-300 group-hover:text-primary group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </a>
-            </div>
-          </div>
+          <div class="contact-intro"><div class="section-kicker"><span>04</span><p>{{ t('contact.label') }}</p></div><p>{{ t('contact.subtitle') }}</p></div>
+          <a class="contact-email" href="mailto:etonameklou19@gmail.com"><span>{{ t('portfolio.contactLead') }}</span><strong>etonameklou19@gmail.com</strong><UIcon name="i-lucide-arrow-up-right" class="contact-arrow" /></a>
         </RevealOnScroll>
+        <div class="contact-grid">
+          <a v-for="link in contactLinks" :key="link.key" :href="link.href" :target="link.href.startsWith('http') ? '_blank' : undefined" :rel="link.href.startsWith('http') ? 'noopener noreferrer' : undefined" class="contact-card">
+            <UIcon :name="link.icon" class="size-5" /><div><p>{{ link.label }}</p><strong>{{ link.value }}</strong></div><UIcon name="i-lucide-arrow-up-right" class="contact-card-arrow" />
+          </a>
+        </div>
       </UContainer>
     </section>
   </div>

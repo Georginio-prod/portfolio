@@ -19,6 +19,16 @@
     "location": "Lomé, Togo",
     "openToWork": "Disponible pour des opportunités"
   },
+  "portfolio": {
+    "availability": "Ouvert aux opportunités ambitieuses",
+    "heroStatement": "Je rends les systèmes techniques clairs, fiables et prêts à être utilisés par de vraies personnes.",
+    "scroll": "Explorer les réalisations",
+    "projectsCount": "projets dans l'archive",
+    "projectsHeading": "Des projets avec un point de vue.",
+    "projectSelector": "Choisir un projet",
+    "trajectoryHeading": "Le parcours fait partie de la pratique.",
+    "contactLead": "Un produit qui mérite d'être construit ?"
+  },
   "focusAreas": [
     {
       "title": "Produits web",
@@ -272,6 +282,7 @@
   },
   "navigation": {
     "label": "Navigation du portfolio",
+    "skip": "Aller au contenu",
     "menu": "Menu",
     "home": "Accueil",
     "work": "Réalisations",

@@ -19,6 +19,16 @@
     "location": "Lomé, Togo",
     "openToWork": "Available for opportunities"
   },
+  "portfolio": {
+    "availability": "Open to ambitious opportunities",
+    "heroStatement": "I make technical systems feel clear, dependable, and ready for real people to use.",
+    "scroll": "Explore the work",
+    "projectsCount": "projects in the archive",
+    "projectsHeading": "Work with a point of view.",
+    "projectSelector": "Choose a project",
+    "trajectoryHeading": "The path is part of the practice.",
+    "contactLead": "Have a product worth building?"
+  },
   "focusAreas": [
     {
       "title": "Web Products",
@@ -272,6 +282,7 @@
   },
   "navigation": {
     "label": "Portfolio navigation",
+    "skip": "Skip to content",
     "menu": "Menu",
     "home": "Home",
     "work": "Work",
