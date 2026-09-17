@@ -1,12 +1,11 @@
 """Build the bilingual CV assets served by the portfolio.
 
-The French document is kept byte-for-byte from the CV supplied by Komla.  The
-English document is a faithful translation of the same information, redrawn in
-the same one-page, two-column style so it remains easy to scan internationally.
+The French document is kept as the versioned source of truth. The English
+document is a faithful translation of the same information, redrawn in the
+same one-page, two-column style so it remains easy to scan internationally.
 """
 
 from pathlib import Path
-from shutil import copy2
 
 from reportlab.lib.colors import HexColor, white
 from reportlab.lib.enums import TA_LEFT
@@ -19,7 +18,6 @@ from reportlab.platypus import Paragraph
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SOURCE_FR = Path(r"C:\Users\ger\Documents\Perso\Nouveau dossier\CV_2026-09-07_Komla Etonam Georges_EKLOU.pdf")
 OUTPUT_DIR = ROOT / "public" / "cv"
 OUTPUT_FR = OUTPUT_DIR / "CV_Komla_Etonam_Georges_EKLOU_FR.pdf"
 OUTPUT_EN = OUTPUT_DIR / "CV_Komla_Etonam_Georges_EKLOU_EN.pdf"
@@ -92,7 +90,11 @@ def experience(
 
 def generate_english_cv() -> None:
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-    copy2(SOURCE_FR, OUTPUT_FR)
+
+    if not OUTPUT_FR.exists():
+        raise FileNotFoundError(
+            f"French CV source is missing: {OUTPUT_FR}. Restore it before generating the English CV."
+        )
 
     c = canvas.Canvas(str(OUTPUT_EN), pagesize=A4, pageCompression=1)
     c.setTitle("Komla Etonam Georges EKLOU - CV (English)")
@@ -125,6 +127,7 @@ def generate_english_cv() -> None:
     y = page_height - 32
     for line in [
         "Email - etonameklou19@gmail.com",
+        "Date of birth - 19 March 2002",
         "Phone - +228 98 93 85 55",
         "Location - Zanguera, Lome, Togo",
         "Nationality - Togolese",
@@ -152,10 +155,10 @@ def generate_english_cv() -> None:
         y = paragraph(c, f"<b>{item}</b>", 23, y, sidebar - 42, side_body_bold) - 6
 
     y -= 10
-    y = paragraph(c, "Additional skills", 23, y, sidebar - 42, side_title) - 10
+    y = paragraph(c, "Skills", 23, y, sidebar - 42, side_title) - 10
     y = paragraph(
         c,
-        "Linux<br/>Git / Git flow<br/>Docker<br/>Node.js<br/>Figma, UI/UX<br/>React, Java, Python<br/>WordPress<br/>MySQL Workbench, WAMP, Firebase, MongoDB<br/>Scrum<br/>Excel, Word, PowerPoint",
+        "<b>Secondary skills</b><br/>Linux<br/>Git / Git flow<br/>Docker<br/>Node.js<br/>Figma, UI/UX<br/>React, Java, Python<br/>WordPress<br/>MySQL Workbench, WAMP, Firebase, MongoDB<br/>Scrum<br/>Excel, Word, PowerPoint",
         23,
         y,
         sidebar - 42,
